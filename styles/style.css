@@ -1,0 +1,1628 @@
+/* JAPONÉS CON LETI: Paleta, tipografía y estilos unificados*/
+
+
+/* PALETA DE COLORES */
+:root {
+  /* COLORES PRINCIPALES */
+  --lavanda: #F7EFF1;        /* Lavender Blush */
+  --rosa: #EBD1DC;           /* Creamy Freesia */
+  --marron-claro: #CEB1BE;   /* Candlelight Dinner */
+
+  /* COLORES OSCUROS */
+  --marron-oscuro: #675861;  /* Urban Legend */
+  --negro: #2D2D34;          /* Bastille */
+
+  /* Tipografías */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Manrope", sans-serif;
+}
+
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ESTILOS GENERALES */
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+h3 {
+  font-family: var(--font-serif);
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+
+/* ============================================================
+   NAV — COMPARTIDO
+   ============================================================ */
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+.navbar img {
+  width: 80px;
+}
+
+.navbar ul {
+  gap: 30px;
+}
+
+/* ============================================================
+   NAV — HEADER CLARO (header.php)
+   ============================================================ */
+.navbar .nav-link {
+  color: var(--marron-oscuro);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  background-color: var(--marron-oscuro);
+  color: var(--rosa) !important;
+}
+
+.navbar i {
+ color: var(--rosa);
+  font-size: 20px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.navbar i:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   NAV — HEADER DARK (header-dark.php)
+   ============================================================ */
+
+/* Links lado izquierdo — texto rosa, hover rosa con texto marrón */
+.navbar .navbar-nav .nav-link-izq {
+  color: var(--rosa) !important;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar .navbar-nav .nav-link-izq:hover,
+.navbar .navbar-nav .nav-link-izq:focus,
+.navbar .navbar-nav .nav-link-izq.active {
+  background-color: var(--rosa) !important;
+  color: var(--marron-oscuro) !important;
+}
+
+/* Links lado derecho — texto marrón, hover marrón con texto rosa */
+.navbar .navbar-nav .nav-link-der {
+  color: var(--marron-oscuro) !important;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar .navbar-nav .nav-link-der:hover,
+.navbar .navbar-nav .nav-link-der:focus,
+.navbar .navbar-nav .nav-link-der.active {
+  background-color: var(--marron-oscuro) !important;
+  color: var(--rosa) !important;
+}
+
+.navbar-icon-dark {
+  color: var(--marron-oscuro) !important;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.navbar-icon-dark:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   DROPDOWN — COMPARTIDO PARA AMBOS HEADERS
+   ============================================================ */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--marron-oscuro);
+  border: 1px solid var(--lavanda);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.dropdown-header {
+  color: var(--rosa);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+}
+
+.dropdown-item {
+  color: var(--lavanda);
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--rosa) !important;
+  color: var(--marron-oscuro) !important;
+}
+
+.dropdown-divider {
+  border-color: var(--rosa);
+}
+
+@media (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+}
+
+/* ============================================================
+   NAV — MÓVIL (compartido para ambos headers)
+   ============================================================ */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: var(--rosa);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .navbar .nav-link,
+  .navbar .navbar-nav .nav-link-izq,
+  .navbar .navbar-nav .nav-link-der {
+    color: var(--marron-oscuro) !important;
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link.active,
+  .navbar .navbar-nav .nav-link-izq:hover,
+  .navbar .navbar-nav .nav-link-der:hover {
+    background-color: var(--marron-oscuro) !important;
+    color: var(--rosa) !important;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none !important;
+    background-color: var(--marron-oscuro) !important;
+    box-shadow: none;
+    padding-left: 10px;
+    opacity: 1;
+    pointer-events: auto;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .dropdown-item {
+    color: var(--lavanda);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--rosa) !important;
+    color: var(--marron-oscuro) !important;
+  }
+
+  .navbar-icons {
+    margin: 20px;
+    padding-top: 10px;
+  }
+
+  .navbar i,
+  .navbar-icon-dark {
+    color: var(--marron-oscuro) !important;
+  }
+}
+
+/* ============================================================
+   HOME 
+   ============================================================ */
+
+   /* HERO */
+.hero {
+  height: 100vh;
+  background-image: url('../img/home/portada-home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero .container {
+  width: 95%;
+}
+
+.hero span.subtitulo {
+  display: inline-block;
+  background-color: var(--rosa);
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  color: var(--marron-oscuro);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  color: var(--marron-oscuro);
+  font-size: 80px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 180, 185, 0.6);
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.boton-contacto {
+  padding: 5px 20px;
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+  margin-right: 15px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.boton-contacto:hover {
+  background-color: var(--lavanda);
+  color: var(--marron-oscuro);
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.boton-conocenos {
+  padding: 5px 20px;
+  background-color: var(--marron-claro);
+  color: var(--marron-oscuro);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.boton-conocenos:hover {
+  background-color: var(--rosa);
+  color: var(--marron-oscuro);
+  transition: 0.5s;
+}
+
+
+/* HOME — POR QUÉ ELEGIRNOS */
+.elegirnos {
+  background: var(--lavanda);
+  padding: 70px 0;
+}
+
+.elegirnos p {
+  color: var(--negro);
+  font-family: var(--font-sans);
+}
+
+
+/* HOME — MÉTODO */
+.metodo {
+  background-color: var(--marron-claro);
+  color: white;
+}
+
+.metodo .row {
+  padding: 70px 15px;
+}
+
+.metodo a.boton-ver-cursos {
+  padding: 5px 20px;
+  color: var(--lavanda);
+  background-color: var(--marron-oscuro);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.metodo a.boton-ver-cursos:hover {
+  background-color: var(--rosa);
+  color: var(--marron-oscuro);
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.metodo img {
+  margin-bottom: 30px;
+}
+
+.metodo p {
+  line-height: 30px;
+  font-size: 15px;
+  color: var(--negro);
+}
+
+
+/* HOME — LITERATURA */
+.literatura {
+  background-color: var(--lavanda);
+}
+
+.literatura .container {
+  padding: 70px 0;
+  width: 90%;
+}
+
+.literatura h2 {
+  color: var(--marron-oscuro);
+}
+
+.literatura .options {
+  display: flex;
+  height: 500px;
+  gap: 10px;
+}
+
+.literatura .option {
+  flex: 1;
+  background: var(--bg) center/cover no-repeat;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.literatura .option.active {
+  flex: 5;
+  border-radius: 40px;
+}
+
+.literatura .option::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--rosa), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.literatura .option.active::after {
+  opacity: 1;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 15px;
+  color: var(--marron-oscuro);
+  z-index: 2;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.overlay-text h3 {
+  margin: 0;
+  font-size: 20px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+.overlay-text span {
+  font-size: 15px;
+  font-family: var(--font-sans);
+}
+
+.miBoton {
+  position: relative;
+  background-color: var(--marron-oscuro);
+  color: white;
+  border-radius: 6px;
+  padding: 8px 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.miBoton:hover {
+  background-color: transparent;   /* se queda sin fondo */
+  color: var(--marron-oscuro);      /* texto cambia a marrón */
+}
+
+/* Marco decorativo desplazado — el que se ve detrás */
+.miBoton::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -6px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--marron-oscuro);
+  border-radius: 6px;
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+
+.miBoton:hover::after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (max-width: 576px) {
+  .miBoton {
+    padding: 8px 40px;
+    font-size: 0.85rem;
+  }
+
+  .miBoton::after {
+    top: 4px;
+    left: -4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .literatura .options {
+    height: 250px;
+  }
+
+  .literatura .option {
+    border-radius: 20px;
+  }
+
+  .literatura h3 {
+    font-size: 1rem;
+  }
+
+  .literatura p {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* HOME — BLOG */
+.blog {
+  background-color: var(--marron-claro);
+  color: var(--negro);
+}
+
+.blog .container {
+  padding: 70px 0;
+  width: 90%;
+}
+
+.blog h2 {
+  color: var(--lavanda);
+}
+
+.blog img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.blog p {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.blog h3 {
+  margin-bottom: 25px;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  font-weight: normal;
+}
+
+
+/* HOME — RESEÑAS */
+.resenas {
+  background-color: var(--lavanda);
+}
+
+.resenas .container {
+  padding: 70px 0;
+  max-width: 700px;
+}
+
+.resenas h2 {
+  color: var(--marron-oscuro);
+}
+
+.resenas p.resena {
+  color: var(--negro);
+}
+
+.resenas .nombre-cliente {
+  color: var(--marron-claro);
+  font-weight: 600;
+}
+
+.stars {
+  color: gold;
+  font-size: 1.5rem;
+}
+
+.resenas-contenido {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--marron-claro);
+  font-size: 25px;
+}
+
+.flecha.izquierda { left: 0; }
+.flecha.derecha   { right: 0; }
+
+@media (max-width: 768px) {
+  .resenas .container {
+    max-width: 100%;
+    padding: 70px 20px;
+  }
+
+  .flecha { display: none; }
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+}
+
+.footer .container {
+  padding-top: 70px;
+  padding-bottom: 40px;
+}
+
+.footer h4 {
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+  font-family: var(--font-serif);
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer ul li a {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  text-decoration: none;
+  color: var(--lavanda);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer ul li a:hover {
+  color: var(--rosa);
+}
+
+.social-icons i {
+  font-size: 1.2rem;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  opacity: 0.7;
+}
+
+.footer-bottom {
+  background-color: var(--rosa);
+  color: var(--marron-oscuro);
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+}
+
+
+/* ============================================================
+   CURSOS 
+   ============================================================ */
+
+   /* HERO */
+/* HERO CURSOS */
+.cursos-hero {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cursos-hero-left {
+  width: 50%;
+  background-color: var(--marron-oscuro); 
+  padding: 50px 60px 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cursos-hero-content h1 {
+  font-size: 70px;
+  color: var(--lavanda);     
+  margin-bottom: 16px;
+}
+
+.cursos-hero-content p {
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--lavanda);
+  margin-bottom: 30px;
+}
+
+.cursos-hero-right {
+  width: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cursos-hero-right,
+.sobre-hero-right {
+  position: relative;  /* necesario para que el overlay se posicione dentro */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;            /* ocupa toda la imagen */
+  background-color: rgba(255, 255, 255, 0.3);  /* blanco al 30% de opacidad */
+  z-index: 1;
+}
+
+.cursos-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 768px) {
+  .cursos-hero {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .cursos-hero-right {
+    order: 1;
+    width: 100%;
+    height: 75vh;
+    flex: 1;
+  }
+
+  .cursos-hero-right img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .cursos-hero-left {
+    order: 2;
+    width: 100%;
+    height: 30vh;
+    padding: 30px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .cursos-hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .cursos-hero-content p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+/* CURSOS — LISTADO */
+.cursos-listado {
+  background-color: var(--marron-claro);
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.cursos-listado-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+}
+
+.cursos-listado-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(247, 239, 241, 0.88);
+}
+
+.cursos-listado .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cursos-listado-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.cursos-nivel h2 {
+  color: var(--marron-oscuro);
+  margin-bottom: 40px;
+}
+
+.curso-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.curso-card-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.curso-card-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--marron-oscuro);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.curso-card-titulo {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  margin: 0;
+}
+
+.curso-card a.boton-ver-cursos {
+  padding: 5px 20px;
+  margin-top: 10px;
+  color: var(--lavanda);
+  background-color: var(--marron-oscuro);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.cursos-cta{
+  h3{
+    margin-top: 30px;
+    color: var(--lavanda);
+  }
+}
+
+/* CURSOS — RECURSOS GRATUITOS */
+.recursos-section {
+  background-color: var(--lavanda);
+  padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.recursos-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.recursos-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.recursos-inner h2 {
+  font-size: 80px;
+  color: var(--marron-oscuro);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.recursos-inner p {
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  max-width: 560px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .recursos-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recursos-btn-wrapper {
+    order: 3;              /* el botón va al final */
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .recursos-inner h2 {
+    order: 1;
+    font-size: 36px;
+  }
+
+  .recursos-inner p {
+    order: 2;
+  }
+}
+
+/* Ilustraciones laterales */
+.recursos-deco {
+  position: absolute;
+  top: 0;
+  bottom: 0;         
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.recursos-deco-izq {
+  left: -60px;
+}
+
+.recursos-deco-der {
+  right: -60px;
+}
+
+.recursos-deco img {
+  width: 300px;
+  height: auto !important;
+  display: block;
+}
+
+/* ANIMACIÓN FLOTANTE */
+@keyframes flotar-izq {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(40px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes flotar-der {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(-25px); }
+  100% { transform: translateX(0px); }
+}
+
+.recursos-deco-izq img {
+  animation: flotar-izq 5s ease-in-out infinite;
+}
+
+.recursos-deco-der img {
+  animation: flotar-der 5s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .recursos-deco-izq {
+    left: -80px;
+  }
+
+  .recursos-deco-der {
+    right: -80px;
+  }
+
+  .recursos-deco img {
+    width: 220px;
+  }
+
+  .recursos-inner h2 {
+    font-size: 36px;
+  }
+
+  .recursos-btn-wrapper {
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   SOBRE MÍ
+   ============================================================ */
+
+   /* HERO */
+.sobre-hero {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sobre-hero-left {
+  width: 50%;
+  background-color: var(--marron-oscuro);
+  padding: 50px 60px 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sobre-hero-content h1 {
+  font-size: 70px;
+  color: var(--rosa);
+  margin-bottom: 16px;
+}
+
+.sobre-hero-content p {
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--lavanda);
+  margin-bottom: 40px;
+}
+
+.sobre-hero-right {
+  width: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sobre-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 768px) {
+  .sobre-hero {
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .sobre-hero-right {
+    order: 1;
+    width: 100%;
+    height: 75vh;
+    flex: 1;
+  }
+
+  .sobre-hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .sobre-hero-left {
+    order: 2;
+    width: 100%;
+    height: 25vh;
+    padding: 30px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;   
+    flex-direction: column;      
+  }
+
+  .sobre-hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .sobre-hero-content p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+
+/* SOBRE MÍ — INTRO */
+.sobre-intro {
+  background-color: var(--lavanda);
+  padding: 80px 0;
+}
+
+.sobre-intro-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sobre-deco {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.sobre-deco-left img,
+.sobre-deco-right img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.sobre-intro-text {
+  flex: 1;
+}
+
+.sobre-intro-text p {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--marron-oscuro);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .sobre-intro-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sobre-deco-left {
+    order: 1;
+  }
+
+  .sobre-intro-text {
+    order: 2;
+  }
+
+  .sobre-deco-right {
+    order: 3;
+  }
+
+  .sobre-deco-left img,
+  .sobre-deco-right img {
+    width: 170px;
+    height: auto;
+  }
+}
+
+/* SOBRE MÍ - TIMELINE */
+/* SOBRE MÍ — TIMELINE */
+.sobre-timeline {
+  background-color: var(--marron-claro);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre-timeline h2 {
+  color: var(--lavanda);
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+}
+
+/* Línea central */
+.timeline-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 60px;
+  width: 1px;
+  background-color: rgba(247, 239, 241, 0.4);
+  transform: translateX(-50%);
+}
+
+/* Filas */
+.timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.timeline-content {
+  padding: 0 30px;
+}
+
+.timeline-row.left .timeline-content {
+  grid-column: 1;
+  text-align: right;
+}
+
+.timeline-row.right .timeline-content {
+  grid-column: 2;
+  text-align: left;
+}
+
+/* Texto */
+.timeline-year {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--lavanda);
+  margin-bottom: 4px;
+}
+
+.timeline-content h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lavanda);
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+}
+
+.timeline-content p {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--negro);
+}
+
+.timeline-continua {
+  font-style: italic;
+  font-size: 18px;
+  color: var(--lavanda);
+  margin-top: 20px;
+  font-family: var(--font-serif);
+}
+
+/* Asegura que el contenido esté por encima de las ilustraciones */
+.sobre-timeline .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ilustraciones decorativas */
+.timeline-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.timeline-deco img {
+  width: 280px;
+  height: auto !important;
+  display: block;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.timeline-deco-der {
+  top: 0;
+  right: -40px;
+}
+
+.timeline-deco-izq {
+  bottom: 0;
+  left: -40px;
+}
+
+@keyframes flotar-timeline-der {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(-40px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes flotar-timeline-izq {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(40px); }
+  100% { transform: translateX(0px); }
+}
+
+.timeline-deco-der img {
+  animation: flotar-timeline-der 5s ease-in-out infinite;
+}
+
+.timeline-deco-izq img {
+  animation: flotar-timeline-izq 5s ease-in-out infinite;
+}
+
+/* MÓVIL */
+@media (max-width: 768px) {
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .timeline-row.left .timeline-content,
+  .timeline-row.right .timeline-content {
+    grid-column: 1;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 0;
+  }
+
+  .timeline-empty {
+    display: none;
+  }
+
+  .timeline-line {
+    left: 0;
+  }
+
+  .timeline-deco img {
+    width: 200px;
+    opacity: 0.3;
+  }
+
+  .timeline-deco-der {
+    right: -40px;
+  }
+
+  .timeline-deco-izq {
+    left: -40px;
+  }
+}
+
+
+/* SOBRE MÍ — LECTURAS */
+.sobre-lecturas {
+  background-color: var(--lavanda);
+  padding: 80px 0;
+}
+
+.sobre-lecturas h2 {
+  color: var(--marron-oscuro);
+}
+
+.lectura-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lectura-img {
+  width: 300px;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.lectura-titulo {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--marron-oscuro);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.lectura-autor {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--marron-oscuro);
+  margin: 0;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .sobre-lecturas {
+    padding: 40px 0;
+  }
+
+  .sobre-lecturas h2 {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .lectura-item {
+    margin-bottom: 20px;
+  }
+
+  .lectura-img {
+    width: 320px;
+    object-fit: cover;
+  }
+
+  .lectura-titulo {
+    font-size: 13px;
+  }
+
+  .lectura-autor {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
+   CURSO INDIVIDUAL
+   ============================================================ */
+
+   /* HERO */
+.curso-ind-hero {
+  position: relative;
+  height: 700px;
+  overflow: hidden;
+}
+
+.curso-ind-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.curso-ind-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(247, 239, 241, 0.6);
+}
+
+.curso-ind-hero-content {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  z-index: 10;
+  color: var(--lavanda);
+  max-width: 640px;
+}
+
+.curso-ind-hero-content h1 {
+  font-size: 52px;
+  color: var(--marron-oscuro);
+  margin-bottom: 12px;
+}
+
+.curso-ind-hero-content p {
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--negro);
+}
+
+@media (max-width: 768px) {
+  .curso-ind-hero {
+    height: 60vh;
+  }
+
+  .curso-ind-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .curso-ind-hero-content {
+    left: 20px;
+    bottom: 30px;
+  }
+
+  .curso-ind-hero-content h1 {
+    font-size: 34px;
+  }
+
+  .curso-ind-hero-content p {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+
+/* CURSO INDIVIDUAL — DESCRIPCIÓN */
+.curso-ind-desc {
+  background-color: var(--marron-claro);
+  padding: 80px 10px;
+}
+
+.curso-ind-desc h2 {
+  color: var(--lavanda);
+  letter-spacing: 2px;
+}
+
+.curso-ind-desc p {
+  font-size: 15px;
+  line-height: 28px;
+  color: var(--negro);
+  margin-bottom: 16px;
+}
+
+.kanji-img {
+  width: 400px;
+  height: auto;
+  opacity: 0.2;
+}
+
+@media (max-width: 992px) {
+  .kanji-img {
+    width: 280px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/*CURSO INDIVIDUAL — CONTENIDOS & OBJETIVO */
+.curso-ind-contenidos {
+  background-color: var(--lavanda);
+  padding: 80px 0;
+}
+
+.contenidos-titulo {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--marron-oscuro);
+  border-bottom: 1px solid var(--marron-claro);
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+.curso-ind-contenidos h4 {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--marron-oscuro);
+  margin-bottom: 6px;
+}
+
+.curso-ind-contenidos ul {
+  padding-left: 18px;
+  list-style: disc;
+  margin-bottom: 0;
+}
+
+.curso-ind-contenidos ul li {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--negro);
+}
+
+
+/* CURSO INDIVIDUAL — FORMULARIO */
+.curso-ind-contacto {
+  background-color: var(--marron-claro);
+  padding: 70px 0 80px;
+}
+
+.curso-contacto-intro {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--negro);
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+.curso-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.curso-form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.curso-form-grupo label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--negro);
+}
+
+.curso-input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--negro);
+  outline: none;
+}
+
+.curso-input::placeholder {
+  color: rgba(103, 88, 97, 0.5);
+}
+
+.curso-input:focus {
+  outline: 2px solid var(--marron-oscuro);
+}
+
+textarea.curso-input {
+  resize: none;
+  height: 100px;
+}
+
+.btn-curso-enviar {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 60px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-curso-enviar:hover {
+  background-color: var(--negro);
+  color: var(--lavanda);
+}
