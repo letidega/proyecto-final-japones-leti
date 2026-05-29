@@ -1,4 +1,20 @@
-<?php include("header.php"); ?>
+<?php
+
+include("header.php");
+
+require_once 'conexion.php';
+
+// Consulta libros
+$consultaLibros = $conexion->prepare("SELECT * FROM libros LIMIT 5");
+$consultaLibros->execute();
+$libros = $consultaLibros->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta blog
+$consultaBlog = $conexion->prepare("SELECT * FROM blog WHERE publicado = 1 ORDER BY fecha DESC LIMIT 4");
+$consultaBlog->execute();
+$posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 <!-- HERO -->
 <section class="hero d-flex align-items-center">
@@ -65,40 +81,24 @@
       <a href="#" class="btn miBoton">Mostrar más</a>
     </div>
     <div class="options">
-      <div class="option active" style="--bg:url('../img/home/libro(2).jpg')">
-        <div class="overlay-text">
-          <h3>Kitchen</h3>
-          <span>Banana Yoshimoto</span>
+
+      <?php $primero = true; ?>
+      <?php foreach ($libros as $libro) { ?>
+        <div class="option <?= $primero ? 'active' : '' ?>" 
+             style="--bg:url('../img/home/<?= $libro['img'] ?>')">
+          <div class="overlay-text">
+            <h3><?= $libro['titulo'] ?></h3>
+            <span><?= $libro['autor'] ?></span>
+          </div>
         </div>
-      </div>
-      <div class="option" style="--bg:url('../img/home/libro(3).jpg')">
-        <div class="overlay-text">
-          <h3>Si los gatos desaparecieran del mundo</h3>
-          <span>Genki Kawamura</span>
-        </div>
-      </div>
-      <div class="option" style="--bg:url('../img/home/libro(4).jpg')">
-        <div class="overlay-text">
-          <h3>La Dependienta</h3>
-          <span>Sayaka Murata</span>
-        </div>
-      </div>
-      <div class="option" style="--bg:url('../img/home/libro(1).jpg')">
-        <div class="overlay-text">
-          <h3>Antes de que se enfríe el café</h3>
-          <span>Toshikazu Kawaguchi</span>
-        </div>
-      </div>
-      <div class="option" style="--bg:url('../img/home/libro(5).jpg')">
-        <div class="overlay-text">
-          <h3>El tercer amor</h3>
-          <span>Hiromi Kawakami</span>
-        </div>
-      </div>
+        <?php $primero = false; ?>
+      <?php } ?>
+
     </div>
   </div>
 </section>
 
+<!-- BLOG -->
 <!-- BLOG -->
 <section class="blog">
   <div class="container">
@@ -107,26 +107,15 @@
       <a href="#" class="btn miBoton">Mostrar más</a>
     </div>
     <div class="row g-4">
-      <div class="col-lg-3 col-md-6">
-        <img src="img/home/blog-1.jpg" class="img-fluid mb-2" alt="Diccionarios de japonés recomendados">
-        <p>Lengua</p>
-        <h3>Diccionarios de japonés recomendados para estudiantes</h3>
-      </div>
-      <div class="col-md-3">
-        <img src="img/home/blog-2.jpg" class="img-fluid mb-2" alt="Ceremonia del té Matcha en Japón">
-        <p>Cultura</p>
-        <h3>La ceremonia del té Matcha en Japón</h3>
-      </div>
-      <div class="col-md-3">
-        <img src="img/home/blog-3.jpg" class="img-fluid mb-2" alt="Cómo organizar tu estudio de japonés">
-        <p>Lengua</p>
-        <h3>Cómo organizar tu estudio de japonés si tienes poco tiempo</h3>
-      </div>
-      <div class="col-md-3">
-        <img src="img/home/blog-4.jpg" class="img-fluid mb-2" alt="Qué es el wa japonés">
-        <p>Cultura</p>
-        <h3>Qué es el wa: el concepto japonés de armonía</h3>
-      </div>
+
+      <?php foreach ($posts as $post) { ?>
+        <div class="col-md-3">
+          <img src="img/home/<?= $post['img'] ?>" class="img-fluid mb-2" alt="<?= $post['titulo'] ?>">
+          <p><?= $post['categoria'] ?></p>
+          <h3><?= $post['titulo'] ?></h3>
+        </div>
+      <?php } ?>
+
     </div>
   </div>
 </section>

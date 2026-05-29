@@ -13,7 +13,7 @@ $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
 
 try{
     $conexion = new PDO($dsn, DB_USER, DB_PASS);
-    echo "Hemos conectado";
+    // echo "Hemos conectado";
 } catch(PDOException $e){
     echo "Conexión fallida: " . $e->getMessage();
 }
