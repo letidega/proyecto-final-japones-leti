@@ -71,7 +71,7 @@
 
       <div class="navbar-icons ms-auto d-flex align-items-center gap-3">
         <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
       </div>
     </div>
 

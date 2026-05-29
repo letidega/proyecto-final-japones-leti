@@ -71,9 +71,9 @@
 </ul>
 
       <div class="navbar-icons ms-auto d-flex align-items-center gap-3">
-        <i class="fa-solid fa-user navbar-icon-dark"></i>
-        <i class="fa-solid fa-magnifying-glass navbar-icon-dark"></i>
-    </div>
+        <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
+        <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+      </div>
 
   </div>
 </nav>
