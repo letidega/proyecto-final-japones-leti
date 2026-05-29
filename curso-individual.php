@@ -1,12 +1,32 @@
-<?php include("header.php"); ?>
+<?php 
+
+include("header.php"); 
+require_once 'conexion.php';
+
+$id_curso = $_GET['id'];
+
+// Datos curso
+$consultaCurso = $conexion->prepare("SELECT * FROM cursos WHERE id_curso = :id_curso");
+$consultaCurso->execute([':id_curso' => $id_curso]);
+$curso = $consultaCurso->fetch(PDO::FETCH_ASSOC);
+
+$contenidos = explode('##', $curso['contenidos']);
+$objetivos = explode('##', $curso['objetivos']);
+
+// Lecciones curso
+$consultaLecciones = $conexion->prepare("SELECT * FROM lecciones WHERE id_curso = :id_curso ORDER BY numero_leccion ASC");
+$consultaLecciones->execute([':id_curso' => $id_curso]);
+$lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 <!-- HERO CURSO -->
 <section class="curso-ind-hero">
-  <img src="img/curso-kaze-hero.jpg" alt='Curso de japonés "Kaze"'>
+  <img src="img/<?= $curso['img'] ?>" alt="<?= $curso['titulo'] ?>">
   <div class="curso-ind-hero-overlay" aria-hidden="true"></div>
   <div class="curso-ind-hero-content">
-    <h1>CURSO "KAZE"(風)</h1>
-    <p>Kaze (風) simboliza el movimiento y el avance natural; en este curso empiezas a ganar fluidez y a dejar que el japonés fluya poco a poco.</p>
+    <h1><?= $curso['titulo'] ?></h1>
+    <p><?= $curso['subtitulo'] ?></p>
   </div>
 </section>
 
@@ -40,12 +60,7 @@
     <div class="row align-items-center">
       <div class="col-12 col-lg-8 order-2 order-lg-1">
         <h2 class="mb-4">DESCRIPCIÓN DEL CURSO</h2>
-        <p>
-          Kaze (風) significa "viento" y simboliza el momento en el que el japonés empieza a avanzar con más fluidez. En este curso continuarás asentando las bases del idioma y darás un paso más hacia una comprensión más clara y ordenada del japonés, siempre a tu ritmo y sin presión.
-          A lo largo del curso aprenderás a construir frases más completas, a usar nuevas partículas con sentido, y a comprender mejor cómo se organiza el japonés a nivel gramatical. Trabajarás con vocabulario de uso cotidiano, empezarás a manejar distintas formas verbales básicas y ganarás soltura para expresar ideas sencillas en contextos habituales.
-          También pondremos el foco en conectar contenidos: entender por qué se usan ciertas estructuras, cómo se encajan entre sí y cómo aplicarlas de forma natural. Las lecciones están diseñadas para leerse con calma, tomar apuntes y practicar mediante ejercicios interactivos, de forma que el aprendizaje sea progresivo y sostenible.
-          Kaze es el curso en el que el japonés deja de sentirse estático y comienza a moverse contigo, ayudándote a avanzar con mayor confianza y continuidad.
-        </p>
+        <p><?= $curso['descripcion'] ?></p>
       </div>
       <div class="col-12 col-lg-4 text-center order-1 order-lg-2">
         <img src="./img/kaze.png" alt="Kanji Kaze — viento" class="kanji-img">
@@ -54,75 +69,38 @@
   </div>
 </section>
 
-<!-- CONTENIDOS & OBJETIVOS -->
 <section class="curso-ind-contenidos">
   <div class="container">
     <div class="row g-5">
 
       <div class="col-lg-6">
         <h2 class="contenidos-titulo">C O N T E N I D O S</h2>
-
-        <h4 class="mt-4">1. VERBOS Y FORMAS INICIALES</h4>
-        <ul>
-          <li>Repaso de la forma diccionario</li>
-          <li>Introducción a nuevas formas verbales básicas</li>
-          <li>Uso de verbos en formas afirmativas y negativas</li>
-        </ul>
-
-        <h4 class="mt-4">2. NUEVAS PARTÍCULAS Y USOS</h4>
-        <ul>
-          <li>Introducción y uso de nuevas partículas básicas</li>
-          <li>Diferencias de uso según el contexto</li>
-          <li>Ejemplos prácticos y frases modelo</li>
-        </ul>
-
-        <h4 class="mt-4">3. CONSTRUCCIÓN DE FRASES</h4>
-        <ul>
-          <li>Ampliación de frases simples</li>
-          <li>Combinación de partículas, verbos y vocabulario</li>
-          <li>Práctica guiada de estructuras habituales</li>
-        </ul>
-
-        <h4 class="mt-4">4. VOCABULARIO COTIDIANO</h4>
-        <ul>
-          <li>Vocabulario relacionado con acciones y rutinas</li>
-          <li>Palabras frecuentes en conversaciones sencillas</li>
-          <li>Uso del vocabulario en contexto</li>
-        </ul>
+        <?php foreach ($contenidos as $bloque) {
+          $partes = explode('|', $bloque);
+          $titulo = array_shift($partes);
+        ?>
+          <h4 class="mt-4"><?= $titulo ?></h4>
+          <ul>
+            <?php foreach ($partes as $item) { ?>
+              <li><?= $item ?></li>
+            <?php } ?>
+          </ul>
+        <?php } ?>
       </div>
 
       <div class="col-lg-6">
         <h2 class="contenidos-titulo">O B J E T I V O S</h2>
-
-        <h4 class="mt-4">1. AFIANZAR LOS CONOCIMIENTOS BÁSICOS</h4>
-        <ul>
-          <li>Reforzar las bases del japonés adquiridas previamente</li>
-          <li>Ganar seguridad en la lectura y comprensión de frases sencillas</li>
-        </ul>
-
-        <h4 class="mt-4">2. MEJORAR LA COMPRENSIÓN GRAMATICAL</h4>
-        <ul>
-          <li>Entender el uso de nuevas partículas</li>
-          <li>Reconocer estructuras básicas de forma natural</li>
-        </ul>
-
-        <h4 class="mt-4">3. GANAR SOLTURA EN LA EXPRESIÓN</h4>
-        <ul>
-          <li>Formar frases más completas</li>
-          <li>Expresar ideas simples de forma clara</li>
-        </ul>
-
-        <h4 class="mt-4">4. AMPLIAR VOCABULARIO FUNCIONAL</h4>
-        <ul>
-          <li>Incorporar vocabulario de uso cotidiano</li>
-          <li>Aplicarlo correctamente en ejercicios prácticos</li>
-        </ul>
-
-        <h4 class="mt-4">5. DESARROLLAR UN APRENDIZAJE CONTINUO</h4>
-        <ul>
-          <li>Conectar contenidos antiguos y nuevos</li>
-          <li>Avanzar de forma progresiva y sin bloqueos</li>
-        </ul>
+        <?php foreach ($objetivos as $bloque) {
+          $partes = explode('|', $bloque);
+          $titulo = array_shift($partes);
+        ?>
+          <h4 class="mt-4"><?= $titulo ?></h4>
+          <ul>
+            <?php foreach ($partes as $item) { ?>
+              <li><?= $item ?></li>
+            <?php } ?>
+          </ul>
+        <?php } ?>
       </div>
 
     </div>

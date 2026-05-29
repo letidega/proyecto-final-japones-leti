@@ -1,4 +1,21 @@
-<?php include("header-dark.php"); ?>
+<?php
+
+include("header-dark.php");
+
+require_once 'conexion.php';
+
+// Consulta cursos nivel inicial
+$consultaInicial = $conexion->prepare("SELECT * FROM cursos WHERE id_nivel = 1 AND activo = 1");
+$consultaInicial->execute();
+$cursosInicial = $consultaInicial->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta cursos nivel intermedio
+$consultaIntermedio = $conexion->prepare("SELECT * FROM cursos WHERE id_nivel = 2 AND activo = 1");
+$consultaIntermedio->execute();
+$cursosIntermedio = $consultaIntermedio->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 
 <!-- HERO CURSOS -->
 <section class="cursos-hero d-flex">
@@ -30,32 +47,16 @@
         <h2 class="text-center">JAPONÉS INICIAL</h2>
         <div class="row g-4 justify-content-center">
 
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-sakura.jpg" class="img-fluid curso-card-img" alt="Curso Sakura — libros de japonés">
-              <p class="curso-card-label">JAPONÉS INICIAL 1.1</p>
-              <p class="curso-card-titulo">CURSO "SAKURA" (桜)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-kaze.jpg" class="img-fluid curso-card-img" alt="Curso Kaze — escritura japonesa">
-              <p class="curso-card-label">JAPONÉS INICIAL 1.2</p>
-              <p class="curso-card-titulo">CURSO "KAZE" (風)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-hikari.jpg" class="img-fluid curso-card-img" alt="Curso Hikari — libro JLPT">
-              <p class="curso-card-label">JAPONÉS INICIAL 1.3</p>
-              <p class="curso-card-titulo">CURSO "HIKARI" (光)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
+          <?php foreach ($cursosInicial as $curso) { ?>
+            <div class="col-lg-4 col-md-6">
+              <article class="curso-card text-center">
+                <img src="img/<?= $curso['img'] ?>" class="img-fluid curso-card-img" alt="<?= $curso['titulo'] ?>">
+                <p class="curso-card-label"><?= $curso['titulo_nivel'] ?? 'JAPONÉS INICIAL' ?></p>
+                <p class="curso-card-titulo"><?= $curso['titulo'] ?></p>
+                <a href="curso-individual.php?id=<?= $curso['id_curso'] ?>" class="boton-ver-cursos">VER MÁS</a>
+              </article>
+            </div>
+          <?php } ?>
 
         </div>
       </div>
@@ -65,32 +66,16 @@
         <h2 class="text-center">JAPONÉS INTERMEDIO</h2>
         <div class="row g-4 justify-content-center">
 
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-michi.jpg" class="img-fluid curso-card-img" alt="Curso Michi — gramática N4-N5">
-              <p class="curso-card-label">JAPONÉS INTERMEDIO 2.1</p>
-              <p class="curso-card-titulo">CURSO "MICHI" (道)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-musubu.jpg" class="img-fluid curso-card-img" alt="Curso Musubu — cuaderno de práctica">
-              <p class="curso-card-label">JAPONÉS INTERMEDIO 2.2</p>
-              <p class="curso-card-titulo">CURSO "MUSUBU" (結)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <article class="curso-card text-center">
-              <img src="img/curso-fukai.jpg" class="img-fluid curso-card-img" alt="Curso Fukai — japonés avanzado">
-              <p class="curso-card-label">JAPONÉS INTERMEDIO 2.3</p>
-              <p class="curso-card-titulo">CURSO "FUKAI" (深い)</p>
-              <a href="curso-individual.php" class="boton-ver-cursos">VER MÁS</a>
-            </article>
-          </div>
+          <?php foreach ($cursosIntermedio as $curso) { ?>
+            <div class="col-lg-4 col-md-6">
+              <article class="curso-card text-center">
+                <img src="img/<?= $curso['img'] ?>" class="img-fluid curso-card-img" alt="<?= $curso['titulo'] ?>">
+                <p class="curso-card-label"><?= $curso['titulo_nivel'] ?? 'JAPONÉS INTERMEDIO' ?></p>
+                <p class="curso-card-titulo"><?= $curso['titulo'] ?></p>
+                <a href="curso-individual.php?id=<?= $curso['id_curso'] ?>" class="boton-ver-cursos">VER MÁS</a>
+              </article>
+            </div>
+          <?php } ?>
 
         </div>
       </div>
