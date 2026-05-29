@@ -1,3 +1,28 @@
+<?php
+session_start();
+require_once 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $consultaLogin = $conexion->prepare("SELECT * FROM usuarios WHERE email = :email");
+    $consultaLogin->execute([':email' => $email]);
+    $usuario = $consultaLogin->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario && password_verify($password, $usuario['password'])) {
+        $_SESSION['id_usuario'] = $usuario['id_usuario'];
+        $_SESSION['nombre'] = $usuario['nombre'];
+        $_SESSION['rol'] = $usuario['rol'];
+        header('Location: mi-perfil.php');
+        exit;
+    } else {
+        $error = "Email o contraseña incorrectos.";
+    }
+}
+?>
+
 <?php include("header.php"); ?>
 
 <section class="auth-section">
@@ -6,12 +31,11 @@
 
       <h1 class="auth-titulo">ACCEDER A MI CUENTA</h1>
 
-      <form class="auth-form" novalidate>
+      <?php if (isset($error)) { ?>
+        <p class="auth-error"><?= $error ?></p>
+      <?php } ?>
 
-        <div class="auth-grupo">
-          <label for="usuario">Nombre de usuario</label>
-          <input type="text" id="usuario" name="usuario" class="auth-input" placeholder="Introduce tu apellido">
-        </div>
+      <form class="auth-form" method="POST" action="acceso.php">
 
         <div class="auth-grupo">
           <label for="email">Correo Electrónico</label>
@@ -24,7 +48,7 @@
         </div>
 
         <div class="auth-submit">
-          <button type="submit" class="btn-auth">REGISTRARME</button>
+          <button type="submit" class="btn-auth">ACCEDER</button>
         </div>
 
         <p class="auth-link text-center mt-3">

@@ -1,4 +1,24 @@
-<?php include("header.php"); ?>
+<?php
+
+session_start();
+
+include("header.php");
+
+require_once 'conexion.php';
+
+// Temporal hasta tener el login funcionando
+$id_usuario = 1;
+
+// Datos del usuario
+$consultaUsuario = $conexion->prepare("SELECT * FROM usuarios WHERE id_usuario = :id_usuario");
+$consultaUsuario->execute([':id_usuario' => $id_usuario]);
+$usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
+
+// Cursos del usuario
+$consultaCursos = $conexion->prepare("SELECT * FROM usuarios_cursos WHERE id_usuario = :id_usuario");
+$consultaCursos->execute([':id_usuario' => $id_usuario]);
+$cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <section class="perfil-section">
   <div class="container">

@@ -2292,7 +2292,7 @@ textarea.contacto-input {
 .perfil-section {
   background-color: var(--lavanda);
   min-height: 100vh;
-  padding: 120px 0 80px;
+  padding: 200px 0 80px;
 }
 
 .perfil-titulo {
@@ -2397,6 +2397,7 @@ textarea.contacto-input {
 }
 
 /* Calendario */
+
 .perfil-calendario-titulo {
   font-family: var(--font-serif);
   font-size: 30px;
@@ -2404,25 +2405,27 @@ textarea.contacto-input {
   color: var(--marron-oscuro);
   letter-spacing: 2px;
   margin-bottom: 40px;
+  margin-top: 60px;
 }
 
 .perfil-calendario {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
-  max-width: 780px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 0 auto 80px;
 }
 
 .cal-flecha {
   background: none;
   border: none;
-  font-size: 40px;
+  font-size: 36px;
   color: var(--marron-oscuro);
   cursor: pointer;
   padding: 10px;
   line-height: 1;
+  margin-top: 8px;
   transition: opacity 0.2s;
 }
 
@@ -2439,19 +2442,19 @@ textarea.contacto-input {
   padding: 12px 20px;
   text-align: center;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--marron-oscuro);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .cal-dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 6px;
+  gap: 4px;
+  margin-bottom: 4px;
 }
 
 .cal-dias-semana span {
@@ -2466,7 +2469,7 @@ textarea.contacto-input {
 .cal-dias {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 4px;
 }
 
 .cal-dia {
@@ -2496,19 +2499,16 @@ textarea.contacto-input {
 .cal-dia.vacio {
   background: transparent;
   cursor: default;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
-  .perfil-card-inner {
-    flex-direction: column;
-  }
-
-  .perfil-foto img {
-    width: 150px;
-    height: 150px;
-  }
-
   .perfil-calendario {
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .cal-dia {
+    font-size: 11px;
+    border-radius: 6px;
   }
 }

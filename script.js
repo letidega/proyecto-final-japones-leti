@@ -83,3 +83,79 @@ if (btnVolver) {
     history.back();
   });
 }
+
+// =============================================
+// CALENDARIO — MI PERFIL
+// =============================================
+var calDias = document.getElementById('cal-dias');
+var calTitulo = document.getElementById('cal-mes-titulo');
+var btnIzq = document.querySelector('.cal-flecha-izq');
+var btnDer = document.querySelector('.cal-flecha-der');
+
+if (calDias && calTitulo) {
+
+  var meses = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+
+  var hoy = new Date();
+  var mesActual = hoy.getMonth();
+  var añoActual = hoy.getFullYear();
+
+  function renderCalendario(mes, año) {
+    calTitulo.textContent = meses[mes] + ' ' + año;
+    calDias.innerHTML = '';
+
+    var primerDia = new Date(año, mes, 1).getDay();
+    var offset = primerDia === 0 ? 6 : primerDia - 1;
+    var totalDias = new Date(año, mes + 1, 0).getDate();
+
+    for (var i = 0; i < offset; i++) {
+      var vacio = document.createElement('div');
+      vacio.classList.add('cal-dia', 'vacio');
+      calDias.appendChild(vacio);
+    }
+
+    for (var d = 1; d <= totalDias; d++) {
+      var dia = document.createElement('div');
+      dia.classList.add('cal-dia');
+      dia.textContent = d;
+
+      if (
+        d === hoy.getDate() &&
+        mes === hoy.getMonth() &&
+        año === hoy.getFullYear()
+      ) {
+        dia.classList.add('hoy');
+      }
+
+      calDias.appendChild(dia);
+    }
+  }
+
+  renderCalendario(mesActual, añoActual);
+
+  if (btnIzq) {
+    btnIzq.addEventListener('click', function() {
+      mesActual--;
+      if (mesActual < 0) {
+        mesActual = 11;
+        añoActual--;
+      }
+      renderCalendario(mesActual, añoActual);
+    });
+  }
+
+  if (btnDer) {
+    btnDer.addEventListener('click', function() {
+      mesActual++;
+      if (mesActual > 11) {
+        mesActual = 0;
+        añoActual++;
+      }
+      renderCalendario(mesActual, añoActual);
+    });
+  }
+
+}
