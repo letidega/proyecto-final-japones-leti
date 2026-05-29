@@ -36,7 +36,7 @@
   <!-- CONTENIDO TABS -->
   <div class="leccion-contenido">
 
-    <!-- ==================== VOCABULARIO ==================== -->
+    <!-- VOCABULARIO -->
     <div id="vocabulario" class="tab-contenido active">
       <div class="container">
         <div class="vocab-grid">
@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <!-- ==================== GRAMÁTICA ==================== -->
+    <!-- GRAMÁTICA -->
     <div id="gramatica" class="tab-contenido">
       <div class="container">
 
@@ -142,7 +142,7 @@
       </div>
     </div>
 
-    <!-- ==================== EJERCICIOS ==================== -->
+    <!-- EJERCICIOS -->
     <div id="ejercicios" class="tab-contenido">
       <div class="container">
         <form id="form-ejercicios" novalidate>
@@ -209,7 +209,7 @@
       </div>
     </div>
 
-    <!-- ==================== AUDIO ==================== -->
+    <!-- AUDIO -->
     <div id="audio" class="tab-contenido">
       <div class="container">
         <div class="audio-lista">
@@ -242,7 +242,7 @@
       </div>
     </div>
 
-    <!-- ==================== CULTURA ==================== -->
+    <!-- CULTURA -->
     <div id="cultura" class="tab-contenido">
       <div class="container">
 
