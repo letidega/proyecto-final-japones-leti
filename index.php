@@ -7,7 +7,7 @@
       <span class="subtitulo">Academia de japonés online</span>
       <h1 class="display-4 fw-bold">JAPONÉS<br>CON LETI</h1>
       <div class="mt-4">
-        <a href="#" class="boton-contacto">Contactar</a>
+        <a href="contacto.php" class="boton-contacto">Contactar</a>
         <a href="sobre-mi.php" class="boton-conocenos">Conócenos</a>
       </div>
     </div>
