@@ -19,15 +19,25 @@ if (isset($_GET['eliminar'])) {
 
 // INSERTAR curso
 if (isset($_POST['accion']) && $_POST['accion'] == 'insertar') {
-    $consultaInsertar = $conexion->prepare("INSERT INTO cursos (id_nivel, titulo, subtitulo, descripcion, img, precio) 
-        VALUES (:id_nivel, :titulo, :subtitulo, :descripcion, :img, :precio)");
+
+    // Subir imagen pequeña
+    $img = $_FILES['img']['name'];
+    move_uploaded_file($_FILES['img']['tmp_name'], 'img/' . $img);
+
+    // Subir imagen grande
+    $img_grande = $_FILES['img_grande']['name'];
+    move_uploaded_file($_FILES['img_grande']['tmp_name'], 'img/' . $img_grande);
+
+    $consultaInsertar = $conexion->prepare("INSERT INTO cursos 
+        (id_nivel, titulo, subtitulo, descripcion, img, img_grande) 
+        VALUES (:id_nivel, :titulo, :subtitulo, :descripcion, :img, :img_grande)");
     $consultaInsertar->execute([
         ':id_nivel'    => $_POST['id_nivel'],
         ':titulo'      => $_POST['titulo'],
         ':subtitulo'   => $_POST['subtitulo'],
         ':descripcion' => $_POST['descripcion'],
-        ':img'         => $_POST['img'],
-        ':precio'      => $_POST['precio']
+        ':img'         => $img,
+        ':img_grande'  => $img_grande
     ]);
     header('Location: admin-cursos.php');
     exit;
@@ -35,21 +45,37 @@ if (isset($_POST['accion']) && $_POST['accion'] == 'insertar') {
 
 // EDITAR curso
 if (isset($_POST['accion']) && $_POST['accion'] == 'editar') {
+
+    // Imagen pequeña — mantener la actual si no se sube nueva
+    if (!empty($_FILES['img']['name'])) {
+        $img = $_FILES['img']['name'];
+        move_uploaded_file($_FILES['img']['tmp_name'], 'img/' . $img);
+    } else {
+        $img = $_POST['img_actual'];
+    }
+
+    // Imagen grande — mantener la actual si no se sube nueva
+    if (!empty($_FILES['img_grande']['name'])) {
+        $img_grande = $_FILES['img_grande']['name'];
+        move_uploaded_file($_FILES['img_grande']['tmp_name'], 'img/' . $img_grande);
+    } else {
+        $img_grande = $_POST['img_grande_actual'];
+    }
+
     $consultaEditar = $conexion->prepare("UPDATE cursos SET 
         id_nivel = :id_nivel,
         titulo = :titulo,
         subtitulo = :subtitulo,
         descripcion = :descripcion,
         img = :img,
-        precio = :precio
-        WHERE id_curso = :id_curso");
+        img_grande = :img_grande WHERE id_curso = :id_curso");
     $consultaEditar->execute([
         ':id_nivel'    => $_POST['id_nivel'],
         ':titulo'      => $_POST['titulo'],
         ':subtitulo'   => $_POST['subtitulo'],
         ':descripcion' => $_POST['descripcion'],
-        ':img'         => $_POST['img'],
-        ':precio'      => $_POST['precio'],
+        ':img'         => $img,
+        ':img_grande'  => $img_grande,
         ':id_curso'    => $_POST['id_curso']
     ]);
     header('Location: admin-cursos.php');
@@ -75,6 +101,7 @@ if (isset($_GET['editar'])) {
 }
 
 include("header.php");
+
 ?>
 
 <section class="admin-section">
@@ -87,93 +114,123 @@ include("header.php");
     </div>
 
     <!-- FORMULARIO INSERTAR -->
-    <div id="form-insertar" class="admin-form" style="display:none;">
-      <h3>Nuevo curso</h3>
-      <form method="POST" action="admin-cursos.php">
-        <input type="hidden" name="accion" value="insertar">
-        <div class="admin-form-grid">
-          <div class="admin-form-grupo">
-            <label>Nivel</label>
-            <select name="id_nivel" class="admin-input">
-              <?php foreach ($niveles as $nivel) { ?>
-                <option value="<?= $nivel['id_nivel'] ?>"><?= $nivel['titulo_nivel'] ?></option>
-              <?php } ?>
-            </select>
-          </div>
-          <div class="admin-form-grupo">
-            <label>Título</label>
-            <input type="text" name="titulo" class="admin-input" placeholder="Título del curso">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Subtítulo</label>
-            <input type="text" name="subtitulo" class="admin-input" placeholder="Subtítulo del curso">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Imagen (nombre del archivo)</label>
-            <input type="text" name="img" class="admin-input" placeholder="curso-kaze.jpg">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Precio</label>
-            <input type="number" step="0.01" name="precio" class="admin-input" placeholder="49.99">
-          </div>
-          <div class="admin-form-grupo admin-form-grupo-full">
-            <label>Descripción</label>
-            <textarea name="descripcion" class="admin-input" rows="4" placeholder="Descripción del curso"></textarea>
-          </div>
-        </div>
-        <div class="admin-form-botones">
-          <button type="submit" class="btn miBoton">GUARDAR</button>
-          <button type="button" class="btn admin-btn-cancelar" onclick="toggleFormulario('form-insertar')">CANCELAR</button>
-        </div>
-      </form>
+<div id="form-insertar" class="admin-form" style="display:none;">
+  <h3>Nuevo curso</h3>
+  <form method="POST" action="admin-cursos.php" enctype="multipart/form-data">
+    <input type="hidden" name="accion" value="insertar">
+    <div class="admin-form-grid">
+
+      <div class="admin-form-grupo">
+        <label>Nivel</label>
+        <select name="id_nivel" class="admin-input">
+          <?php foreach ($niveles as $nivel) { ?>
+            <option value="<?= $nivel['id_nivel'] ?>"><?= $nivel['titulo_nivel'] ?></option>
+          <?php } ?>
+        </select>
+      </div>
+
+      <div class="admin-form-grupo">
+        <label>Título</label>
+        <input type="text" name="titulo" class="admin-input" placeholder="Título del curso">
+      </div>
+
+      <div class="admin-form-grupo admin-form-grupo-full">
+        <label>Subtítulo</label>
+        <input type="text" name="subtitulo" class="admin-input" placeholder="Subtítulo del curso">
+      </div>
+
+      <div class="admin-form-grupo admin-form-grupo-full">
+        <label>Descripción</label>
+        <textarea name="descripcion" class="admin-input" rows="4" placeholder="Descripción del curso"></textarea>
+      </div>
+
     </div>
 
-    <!-- FORMULARIO EDITAR -->
-    <?php if ($cursoEditar) { ?>
-    <div id="form-editar" class="admin-form">
-      <h3>Editar curso: <?= $cursoEditar['titulo'] ?></h3>
-      <form method="POST" action="admin-cursos.php">
-        <input type="hidden" name="accion" value="editar">
-        <input type="hidden" name="id_curso" value="<?= $cursoEditar['id_curso'] ?>">
-        <div class="admin-form-grid">
-          <div class="admin-form-grupo">
-            <label>Nivel</label>
-            <select name="id_nivel" class="admin-input">
-              <?php foreach ($niveles as $nivel) { ?>
-                <option value="<?= $nivel['id_nivel'] ?>" <?= $nivel['id_nivel'] == $cursoEditar['id_nivel'] ? 'selected' : '' ?>>
-                  <?= $nivel['titulo_nivel'] ?>
-                </option>
-              <?php } ?>
-            </select>
-          </div>
-          <div class="admin-form-grupo">
-            <label>Título</label>
-            <input type="text" name="titulo" class="admin-input" value="<?= $cursoEditar['titulo'] ?>">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Subtítulo</label>
-            <input type="text" name="subtitulo" class="admin-input" value="<?= $cursoEditar['subtitulo'] ?>">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Imagen</label>
-            <input type="text" name="img" class="admin-input" value="<?= $cursoEditar['img'] ?>">
-          </div>
-          <div class="admin-form-grupo">
-            <label>Precio</label>
-            <input type="number" step="0.01" name="precio" class="admin-input" value="<?= $cursoEditar['precio'] ?>">
-          </div>
-          <div class="admin-form-grupo admin-form-grupo-full">
-            <label>Descripción</label>
-            <textarea name="descripcion" class="admin-input" rows="4"><?= $cursoEditar['descripcion'] ?></textarea>
-          </div>
-        </div>
-        <div class="admin-form-botones">
-          <button type="submit" class="btn miBoton">GUARDAR CAMBIOS</button>
-          <a href="admin-cursos.php" class="btn admin-btn-cancelar">CANCELAR</a>
-        </div>
-      </form>
+    <!-- IMÁGENES EN UNA FILA -->
+    <div class="admin-form-grid-imagenes">
+      <div class="admin-form-grupo">
+        <label>Imagen pequeña (listado de cursos)</label>
+        <input type="file" name="img" class="admin-input" accept="image/*">
+      </div>
+      <div class="admin-form-grupo">
+        <label>Imagen grande (hero del curso)</label>
+        <input type="file" name="img_grande" class="admin-input" accept="image/*">
+      </div>
     </div>
-    <?php } ?>
+
+    <div class="admin-form-botones">
+      <button type="submit" class="btn miBoton">GUARDAR</button>
+      <button type="button" class="btn admin-btn-cancelar" onclick="toggleFormulario('form-insertar')">CANCELAR</button>
+    </div>
+
+  </form>
+</div>
+
+    <!-- FORMULARIO EDITAR -->
+<?php if ($cursoEditar) { ?>
+<div id="form-editar" class="admin-form">
+  <h3>Editar curso: <?= htmlspecialchars($cursoEditar['titulo']) ?></h3>
+  <form method="POST" action="admin-cursos.php" enctype="multipart/form-data">
+    <input type="hidden" name="accion" value="editar">
+    <input type="hidden" name="id_curso" value="<?= $cursoEditar['id_curso'] ?>">
+    <input type="hidden" name="img_actual" value="<?= $cursoEditar['img'] ?>">
+    <input type="hidden" name="img_grande_actual" value="<?= $cursoEditar['img_grande'] ?>">
+
+    <div class="admin-form-grid">
+
+      <div class="admin-form-grupo">
+        <label>Nivel</label>
+        <select name="id_nivel" class="admin-input">
+          <?php foreach ($niveles as $nivel) { ?>
+            <option value="<?= $nivel['id_nivel'] ?>" <?= $nivel['id_nivel'] == $cursoEditar['id_nivel'] ? 'selected' : '' ?>>
+              <?= $nivel['titulo_nivel'] ?>
+            </option>
+          <?php } ?>
+        </select>
+      </div>
+
+      <div class="admin-form-grupo">
+        <label>Título</label>
+        <input type="text" name="titulo" class="admin-input" value="<?= htmlspecialchars($cursoEditar['titulo'], ENT_QUOTES) ?>">
+      </div>
+
+      <div class="admin-form-grupo admin-form-grupo-full">
+        <label>Subtítulo</label>
+        <input type="text" name="subtitulo" class="admin-input" value="<?= $cursoEditar['subtitulo'] ?>">
+      </div>
+
+      <div class="admin-form-grupo admin-form-grupo-full">
+        <label>Descripción</label>
+        <textarea name="descripcion" class="admin-input" rows="4"><?= $cursoEditar['descripcion'] ?></textarea>
+      </div>
+
+    </div>
+
+    <!-- IMÁGENES EN UNA FILA -->
+    <div class="admin-form-grid-imagenes">
+
+      <div class="admin-form-grupo">
+        <label>Imagen pequeña (actual: <?= $cursoEditar['img'] ?>)</label>
+        <input type="file" name="img" class="admin-input" accept="image/*">
+        <small>Déjalo vacío para mantener la imagen actual</small>
+      </div>
+
+      <div class="admin-form-grupo">
+        <label>Imagen grande — hero (actual: <?= $cursoEditar['img_grande'] ?>)</label>
+        <input type="file" name="img_grande" class="admin-input" accept="image/*">
+        <small>Déjalo vacío para mantener la imagen actual</small>
+      </div>
+
+    </div>
+
+    <div class="admin-form-botones">
+      <button type="submit" class="btn miBoton">GUARDAR CAMBIOS</button>
+      <a href="admin-cursos.php" class="btn admin-btn-cancelar">CANCELAR</a>
+    </div>
+
+  </form>
+</div>
+<?php } ?>
 
     <!-- LISTA DE CURSOS -->
     <div class="admin-lista">
@@ -188,7 +245,6 @@ include("header.php");
             </span>
             <h3 class="admin-item-titulo"><?= $curso['titulo'] ?></h3>
             <p class="admin-item-subtitulo"><?= $curso['subtitulo'] ?></p>
-            <p class="admin-item-precio"><?= $curso['precio'] ?>€</p>
           </div>
           <div class="admin-item-botones">
             <a href="admin-cursos.php?editar=<?= $curso['id_curso'] ?>" class="btn admin-btn-editar">EDITAR</a>

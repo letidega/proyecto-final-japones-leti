@@ -2320,13 +2320,10 @@ textarea.contacto-input {
   margin-bottom: 30px;
 }
 
-.perfil-foto {
-  flex-shrink: 0;
-}
 
 .perfil-foto img {
   width: 200px;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   display: block;
 }
@@ -2517,7 +2514,7 @@ textarea.contacto-input {
 
 
 /* ============================================================
-   ADMIN
+   ADMIN CURSOS
    ============================================================ */
 .admin-section {
   background-color: var(--lavanda);
@@ -2599,6 +2596,8 @@ textarea.contacto-input {
 .admin-form-botones {
   display: flex;
   gap: 12px;
+  justify-content: center;
+  padding-top: 15px;
 }
 
 .admin-btn-cancelar {
@@ -2725,6 +2724,48 @@ textarea.contacto-input {
   background-color: #a93226;
 }
 
+/* Input file estilizado */
+input[type="file"].admin-input {
+  padding: 8px 14px;
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+input[type="file"].admin-input::file-selector-button {
+  background-color: var(--marron-claro);
+  color: var(--marron-oscuro);
+  border: none;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.2s;
+}
+
+input[type="file"].admin-input::file-selector-button:hover {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+}
+
+.admin-form-grupo small {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: rgba(103, 88, 97, 0.6);
+  margin-top: 2px;
+}
+
+/* Grid especial para imágenes juntas */
+.admin-form-grid-imagenes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 @media (max-width: 768px) {
   .admin-item {
     flex-direction: column;
@@ -2797,7 +2838,7 @@ textarea.contacto-input {
 
 .editar-perfil-input {
   width: 100%;
-  background-color: white;
+  background-color: var(--lavanda);
   border: none;
   padding: 12px 16px;
   font-family: var(--font-sans);

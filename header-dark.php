@@ -74,6 +74,6 @@
         <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
         <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
       </div>
-2
+
   </div>
 </nav>

@@ -30,25 +30,25 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
       <div class="perfil-card-inner">
 
         <div class="perfil-foto">
-          <img src="img/perfil-foto.jpg" alt="Foto de perfil">
+          <img src="img/<?= $usuario['foto'] ?>" alt="Foto de perfil">
         </div>
 
         <div class="perfil-datos">
           <div class="perfil-dato">
             <span class="perfil-dato-label">NOMBRE:</span>
-            <span class="perfil-dato-valor">Nombre</span>
+            <span class="perfil-dato-valor"><?= $usuario['nombre'] ?></span>
           </div>
           <div class="perfil-dato">
             <span class="perfil-dato-label">APELLIDO:</span>
-            <span class="perfil-dato-valor">Apellido</span>
+            <span class="perfil-dato-valor"><?= $usuario['apellido'] ?></span>
           </div>
           <div class="perfil-dato">
             <span class="perfil-dato-label">CORREO ELECTRÓNICO:</span>
-            <span class="perfil-dato-valor">hola@hola.com</span>
+            <span class="perfil-dato-valor"><?= $usuario['email'] ?></span>
           </div>
           <div class="perfil-dato">
             <span class="perfil-dato-label">TELÉFONO:</span>
-            <span class="perfil-dato-valor">448551230</span>
+            <span class="perfil-dato-valor"><?= $usuario['telefono'] ?></span>
           </div>
           <a href="editar-perfil.php" class="perfil-editar">Editar datos</a>
         </div>

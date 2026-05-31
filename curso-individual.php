@@ -63,7 +63,7 @@ $lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
         <p><?= $curso['descripcion'] ?></p>
       </div>
       <div class="col-12 col-lg-4 text-center order-1 order-lg-2">
-        <img src="./img/kaze.png" alt="Kanji Kaze — viento" class="kanji-img">
+        <img src="img/<?= $curso['img_kanji'] ?>" alt="Kanji <?= $curso['titulo'] ?>" class="kanji-img">
       </div>
     </div>
   </div>

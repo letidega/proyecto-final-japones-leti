@@ -159,3 +159,13 @@ if (calDias && calTitulo) {
   }
 
 }
+
+// Abrir formulario insertar curso 
+function toggleFormulario(id) {
+  var form = document.getElementById(id);
+  if (form.style.display === 'none') {
+    form.style.display = 'block';
+  } else {
+    form.style.display = 'none';
+  }
+}
