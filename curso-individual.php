@@ -22,7 +22,7 @@ $lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- HERO CURSO -->
 <section class="curso-ind-hero">
-  <img src="img/<?= $curso['img'] ?>" alt="<?= $curso['titulo'] ?>">
+  <img src="img/<?= $curso['img_grande'] ?>" alt="<?= $curso['titulo'] ?>">
   <div class="curso-ind-hero-overlay" aria-hidden="true"></div>
   <div class="curso-ind-hero-content">
     <h1><?= $curso['titulo'] ?></h1>
