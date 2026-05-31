@@ -1,4 +1,35 @@
-<?php include("header.php"); ?>
+<?php
+
+session_start();
+
+require_once 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $mensaje = $_POST['mensaje'];
+
+    $consultaContacto = $conexion->prepare("INSERT INTO contacto 
+        (nombre, apellido, telefono, email, mensaje) 
+        VALUES (:nombre, :apellido, :telefono, :email, :mensaje)");
+
+    $consultaContacto->execute([
+        ':nombre'   => $nombre,
+        ':apellido' => $apellido,
+        ':telefono' => $telefono,
+        ':email'    => $email,
+        ':mensaje'  => $mensaje
+    ]);
+
+    $exito = "Tu mensaje ha sido enviado correctamente. ¡Nos pondremos en contacto contigo pronto!";
+}
+
+include("header.php");
+
+?>
 
 <!-- HERO CONTACTO -->
 <section class="contacto-hero d-flex">
@@ -10,7 +41,11 @@
       paso con el japonés.
     </p>
 
-    <form class="contacto-form" novalidate>
+        <?php if (isset($exito)) { ?>
+            <p class="contacto-exito"><?= $exito ?></p>
+        <?php } ?>
+
+    <form class="contacto-form" method="POST" action="contacto.php">
 
       <div class="contacto-form-grupo">
         <label for="nombre">Nombre *</label>

@@ -1408,7 +1408,7 @@ p {
    /* HERO */
 .curso-ind-hero {
   position: relative;
-  height: 700px;
+  height: 550px;
   overflow: hidden;
 }
 
@@ -1549,7 +1549,7 @@ p {
 /* CURSO INDIVIDUAL — FORMULARIO */
 .curso-ind-contacto {
   background-color: var(--marron-claro);
-  padding: 70px 0 80px;
+  padding: 100px 80px;
 }
 
 .curso-contacto-intro {
@@ -2033,6 +2033,15 @@ textarea.curso-input {
   outline: none;
 }
 
+.contacto-exito {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #2d7a2d;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
 .contacto-input::placeholder {
   color: rgba(103, 88, 97, 0.5);
 }
@@ -2510,5 +2519,231 @@ textarea.contacto-input {
   .cal-dia {
     font-size: 11px;
     border-radius: 6px;
+  }
+}
+
+
+/* ============================================================
+   ADMIN
+   ============================================================ */
+.admin-section {
+  background-color: var(--lavanda);
+  min-height: 100vh;
+  padding: 120px 0 80px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.admin-titulo {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  letter-spacing: 2px;
+}
+
+/* Formularios */
+.admin-form {
+  background-color: var(--rosa);
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 4px;
+}
+
+.admin-form h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--marron-oscuro);
+  margin-bottom: 24px;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-form-grupo-full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-grupo label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--negro);
+  outline: none;
+}
+
+.admin-input:focus {
+  outline: 1px solid var(--marron-oscuro);
+}
+
+.admin-form-botones {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-btn-cancelar {
+  background-color: transparent;
+  color: var(--marron-oscuro);
+  border: 1px solid var(--marron-oscuro);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  padding: 8px 30px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.admin-btn-cancelar:hover {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+}
+
+/* Lista cursos */
+.admin-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-item {
+  background-color: white;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-radius: 4px;
+}
+
+.admin-item-img {
+  flex-shrink: 0;
+}
+
+.admin-item-img img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.admin-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-item-nivel {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-claro);
+  font-weight: 600;
+}
+
+.admin-item-titulo {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--marron-oscuro);
+  margin: 0;
+}
+
+.admin-item-subtitulo {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(103, 88, 97, 0.7);
+  margin: 0;
+}
+
+.admin-item-precio {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  margin: 0;
+}
+
+.admin-item-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-btn-editar {
+  background-color: var(--marron-claro);
+  color: var(--marron-oscuro);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.admin-btn-editar:hover {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+}
+
+.admin-btn-eliminar {
+  background-color: #c0392b;
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.admin-btn-eliminar:hover {
+  background-color: #a93226;
+}
+
+@media (max-width: 768px) {
+  .admin-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-item-botones {
+    flex-direction: row;
+    width: 100%;
   }
 }

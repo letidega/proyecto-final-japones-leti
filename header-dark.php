@@ -43,29 +43,29 @@
       Cursos
     </a>
     <ul class="dropdown-menu dropdown-menu-dark-version">
-      <li><a class="dropdown-item text-center" href="cursos.php">VER TODOS LOS CURSOS</a></li>
+      <li><a class="dropdown-item fw-bold" href="cursos.php">Ver todos los cursos →</a></li>
+      <li><hr class="dropdown-divider"></li>
       <li class="dropdown-header">Japonés inicial</li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Sakura" (桜)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Kaze" (風)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Hikari" (光)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=1">Curso "Sakura" (桜)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=2">Curso "Kaze" (風)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=3">Curso "Hikari" (光)</a></li>
       <li><hr class="dropdown-divider"></li>
       <li class="dropdown-header">Japonés intermedio</li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Michi" (道)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Musubu" (結)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php">Curso "Fukai" (深い)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=4">Curso "Michi" (道)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=5">Curso "Musubu" (結)</a></li>
+      <li><a class="dropdown-item" href="curso-individual.php?id=6">Curso "Fukai" (深い)</a></li>
     </ul>
-  </li>
 
   <li class="nav-item">
     <a class="nav-link nav-link-der" href="#">Blog</a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link nav-link-der" href="sobre-mi.php">Sobre nosotros</a>
+    <a class="nav-link nav-link-der" href="sobre-mi.php">Sobre nosotras</a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link nav-link-der" href="#">Contacto</a>
+    <a class="nav-link nav-link-der" href="contacto.php">Contacto</a>
   </li>
 
 </ul>
@@ -74,6 +74,6 @@
         <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
         <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
       </div>
-
+2
   </div>
 </nav>
