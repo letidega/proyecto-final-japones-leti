@@ -2740,3 +2740,121 @@ textarea.contacto-input {
     width: 100%;
   }
 }
+
+/* ============================================================
+   EDITAR PERFIL
+   ============================================================ */
+.editar-perfil-section {
+  background-color: var(--lavanda);
+  min-height: 100vh;
+  padding: 120px 0 80px;
+}
+
+.editar-perfil-card {
+  background-color: var(--rosa);
+  padding: 40px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.editar-perfil-subtitulo {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-oscuro);
+  margin-bottom: 20px;
+}
+
+.editar-perfil-subtitulo span {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(103, 88, 97, 0.7);
+}
+
+.editar-perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.editar-perfil-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editar-perfil-grupo label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+}
+
+.editar-perfil-input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--negro);
+  outline: none;
+}
+
+.editar-perfil-input:focus {
+  outline: 1px solid var(--marron-oscuro);
+}
+
+.editar-perfil-botones {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.editar-perfil-cancelar {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.editar-perfil-cancelar:hover {
+  opacity: 0.7;
+  color: var(--marron-oscuro);
+}
+
+.editar-perfil-exito {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #2d7a2d;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.editar-perfil-error {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .editar-perfil-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editar-perfil-card {
+    padding: 24px;
+  }
+}

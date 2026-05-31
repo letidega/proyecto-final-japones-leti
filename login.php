@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 require_once 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -35,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p class="auth-error"><?= $error ?></p>
       <?php } ?>
 
-      <form class="auth-form" method="POST" action="acceso.php">
+      <form class="auth-form" method="POST" action="login.php">
 
         <div class="auth-grupo">
           <label for="email">Correo Electrónico</label>

@@ -50,7 +50,7 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
             <span class="perfil-dato-label">TELÉFONO:</span>
             <span class="perfil-dato-valor">448551230</span>
           </div>
-          <a href="#" class="perfil-editar">Editar datos</a>
+          <a href="editar-perfil.php" class="perfil-editar">Editar datos</a>
         </div>
 
       </div>

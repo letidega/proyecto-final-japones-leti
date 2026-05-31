@@ -13,7 +13,7 @@ if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
     $consultaEliminar = $conexion->prepare("DELETE FROM cursos WHERE id_curso = :id");
     $consultaEliminar->execute([':id' => $id]);
-    header('Location: admin.php');
+    header('Location: admin-cursos.php');
     exit;
 }
 
