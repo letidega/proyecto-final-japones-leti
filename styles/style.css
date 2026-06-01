@@ -2288,6 +2288,27 @@ textarea.contacto-input {
   margin-top: 10px;
 }
 
+.registro-error {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.registro-exito {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #2d7a2d;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.registro-exito a {
+  color: var(--marron-oscuro);
+  text-decoration: underline;
+}
+
 /* ============================================================
    MI PERFIL
    ============================================================ */
