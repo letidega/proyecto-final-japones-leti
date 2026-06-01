@@ -3439,3 +3439,19 @@ input[type="file"].admin-input::file-selector-button:hover {
     right: -60px;
   }
 }
+
+/* Blog hero — mismo que lit pero con color diferente */
+.blog-hero-left {
+  background-color: var(--marron-claro) !important;
+}
+
+/* Categoría del post */
+.lit-libro-categoria {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-oscuro);
+  margin: 0;
+  font-weight: 500;
+}
