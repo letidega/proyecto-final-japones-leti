@@ -18,6 +18,7 @@ $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
 $consultaCursos = $conexion->prepare("SELECT * FROM usuarios_cursos WHERE id_usuario = :id_usuario");
 $consultaCursos->execute([':id_usuario' => $id_usuario]);
 $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <section class="perfil-section">
@@ -64,7 +65,7 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
           <a href="#" class="perfil-planes-link">planes premium.</a>
         </p>
         <div class="text-center mt-4">
-          <a href="#" class="btn miBoton">ACCEDER A MI AULA</a>
+          <a href="aula-virtual.php" class="btn miBoton">ACCEDER A MI AULA</a>
         </div>
       </div>
 

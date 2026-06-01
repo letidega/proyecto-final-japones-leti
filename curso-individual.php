@@ -1,7 +1,11 @@
-<?php 
-
-include("header.php"); 
+<?php
+session_start();
 require_once 'conexion.php';
+
+if (!isset($_GET['id'])) {
+    header('Location: cursos.php');
+    exit;
+}
 
 $id_curso = $_GET['id'];
 
@@ -9,6 +13,11 @@ $id_curso = $_GET['id'];
 $consultaCurso = $conexion->prepare("SELECT * FROM cursos WHERE id_curso = :id_curso");
 $consultaCurso->execute([':id_curso' => $id_curso]);
 $curso = $consultaCurso->fetch(PDO::FETCH_ASSOC);
+
+if (!$curso) {
+    header('Location: cursos.php');
+    exit;
+}
 
 $contenidos = explode('##', $curso['contenidos']);
 $objetivos = explode('##', $curso['objetivos']);
@@ -18,6 +27,28 @@ $consultaLecciones = $conexion->prepare("SELECT * FROM lecciones WHERE id_curso 
 $consultaLecciones->execute([':id_curso' => $id_curso]);
 $lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
 
+// Comprobar si el usuario ya está inscrito
+$yaInscrito = false;
+if (isset($_SESSION['id_usuario'])) {
+    $consultaInscrito = $conexion->prepare("SELECT * FROM usuarios_cursos WHERE id_usuario = :id_usuario AND id_curso = :id_curso");
+    $consultaInscrito->execute([':id_usuario' => $_SESSION['id_usuario'], ':id_curso' => $id_curso]);
+    $yaInscrito = $consultaInscrito->fetch(PDO::FETCH_ASSOC);
+}
+
+// Procesar inscripción
+if (isset($_POST['inscribirse'])) {
+    if (!isset($_SESSION['id_usuario'])) {
+        header('Location: login.php');
+        exit;
+    }
+    if (!$yaInscrito) {
+        $consultaInscribir = $conexion->prepare("INSERT INTO usuarios_cursos (id_usuario, id_curso) VALUES (:id_usuario, :id_curso)");
+        $consultaInscribir->execute([':id_usuario' => $_SESSION['id_usuario'], ':id_curso' => $id_curso]);
+        $yaInscrito = true;
+    }
+}
+
+include("header.php");
 ?>
 
 <!-- HERO CURSO -->
@@ -61,6 +92,21 @@ $lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-12 col-lg-8 order-2 order-lg-1">
         <h2 class="mb-4">DESCRIPCIÓN DEL CURSO</h2>
         <p><?= $curso['descripcion'] ?></p>
+
+        <!-- BOTÓN INSCRIPCIÓN -->
+        <div class="curso-inscripcion mt-4">
+          <?php if ($yaInscrito) { ?>
+            <p class="curso-inscrito-msg">✓ Ya estás inscrito en este curso</p>
+            <a href="aula-virtual.php" class="btn miBoton mt-2">IR A MI AULA</a>
+          <?php } elseif (isset($_SESSION['id_usuario'])) { ?>
+            <form method="POST" action="curso-individual.php?id=<?= $id_curso ?>">
+              <button type="submit" name="inscribirse" class="btn miBoton">INSCRIBIRME AL CURSO</button>
+            </form>
+          <?php } else { ?>
+            <a href="login.php" class="btn miBoton">INICIA SESIÓN PARA INSCRIBIRTE</a>
+          <?php } ?>
+        </div>
+
       </div>
       <div class="col-12 col-lg-4 text-center order-1 order-lg-2">
         <img src="img/<?= $curso['img_kanji'] ?>" alt="Kanji <?= $curso['titulo'] ?>" class="kanji-img">
@@ -69,6 +115,7 @@ $lecciones = $consultaLecciones->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </section>
 
+<!-- CONTENIDOS & OBJETIVOS -->
 <section class="curso-ind-contenidos">
   <div class="container">
     <div class="row g-5">
