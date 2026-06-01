@@ -1,3 +1,4 @@
+<?php if (!isset($_SESSION)) session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,51 +30,67 @@
     <div class="collapse navbar-collapse" id="menu-dark">
       <ul class="navbar-nav mx-auto">
 
-  <li class="nav-item">
-    <a class="nav-link nav-link-izq" href="#">Literatura japonesa</a>
-  </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-izq" href="#">Literatura japonesa</a>
+        </li>
 
-  <li class="nav-item">
-    <a class="nav-link nav-link-izq" href="#">Talleres y eventos</a>
-  </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-izq" href="#">Talleres y eventos</a>
+        </li>
 
-  <!-- DROPDOWN -->
-  <li class="nav-item dropdown">
-    <a class="nav-link nav-link-izq dropdown-toggle" href="cursos.php" data-bs-toggle="dropdown" aria-expanded="false">
-      Cursos
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark-version">
-      <li><a class="dropdown-item fw-bold" href="cursos.php">Ver todos los cursos →</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-header">Japonés inicial</li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=1">Curso "Sakura" (桜)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=2">Curso "Kaze" (風)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=3">Curso "Hikari" (光)</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-header">Japonés intermedio</li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=4">Curso "Michi" (道)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=5">Curso "Musubu" (結)</a></li>
-      <li><a class="dropdown-item" href="curso-individual.php?id=6">Curso "Fukai" (深い)</a></li>
-    </ul>
+        <!-- DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-izq dropdown-toggle" href="cursos.php" data-bs-toggle="dropdown" aria-expanded="false">
+            Cursos
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark-version">
+            <li><a class="dropdown-item fw-bold" href="cursos.php">Ver todos los cursos →</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-header">Japonés inicial</li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=1">Curso "Sakura" (桜)</a></li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=2">Curso "Kaze" (風)</a></li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=3">Curso "Hikari" (光)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-header">Japonés intermedio</li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=4">Curso "Michi" (道)</a></li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=5">Curso "Musubu" (結)</a></li>
+            <li><a class="dropdown-item" href="curso-individual.php?id=6">Curso "Fukai" (深い)</a></li>
+          </ul>
+        </li>
 
-  <li class="nav-item">
-    <a class="nav-link nav-link-der" href="#">Blog</a>
-  </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-der" href="#">Blog</a>
+        </li>
 
-  <li class="nav-item">
-    <a class="nav-link nav-link-der" href="sobre-mi.php">Sobre nosotras</a>
-  </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-der" href="sobre-mi.php">Sobre nosotras</a>
+        </li>
 
-  <li class="nav-item">
-    <a class="nav-link nav-link-der" href="contacto.php">Contacto</a>
-  </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-der" href="contacto.php">Contacto</a>
+        </li>
 
-</ul>
+      </ul>
 
-      <div class="navbar-icons ms-auto d-flex align-items-center gap-3">
-        <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
-        <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <div class="navbar-dark-version navbar-icons ms-auto d-flex align-items-center gap-3">
+        <?php if (isset($_SESSION['id_usuario'])) { ?>
+          <span class="navbar-saludo">Hola, <?= $_SESSION['nombre'] ?></span>
+          <a href="mi-perfil.php" aria-label="Mi perfil">
+            <i class="fa-solid fa-user navbar-icon-dark"></i>
+          </a>
+          <a href="logout.php" aria-label="Cerrar sesión">
+            <i class="fa-solid fa-right-from-bracket navbar-icon-dark"></i>
+          </a>
+        <?php } else { ?>
+          <a href="login.php" aria-label="Mi perfil">
+            <i class="fa-solid fa-user navbar-icon-dark"></i>
+          </a>
+        <?php } ?>
+        <a href="#" aria-label="Buscar">
+          <i class="fa-solid fa-magnifying-glass navbar-icon-dark"></i>
+        </a>
       </div>
 
+    </div>
   </div>
 </nav>

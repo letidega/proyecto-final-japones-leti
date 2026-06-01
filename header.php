@@ -1,3 +1,4 @@
+<?php if (!isset($_SESSION)) session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -71,10 +72,24 @@
       </ul>
 
       <div class="navbar-icons ms-auto d-flex align-items-center gap-3">
-        <a href="login.php" aria-label="Mi perfil"><i class="fa-solid fa-user"></i></a>
-        <a href="#" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <?php if (isset($_SESSION['id_usuario'])) { ?>
+          <span class="navbar-saludo">Hola, <?= $_SESSION['nombre'] ?></span>
+          <a href="mi-perfil.php" aria-label="Mi perfil">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <a href="logout.php" aria-label="Cerrar sesión">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </a>
+        <?php } else { ?>
+          <a href="login.php" aria-label="Mi perfil">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        <?php } ?>
+        <a href="#" aria-label="Buscar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
       </div>
-    </div>
 
+    </div>
   </div>
 </nav>
