@@ -2251,6 +2251,35 @@ textarea.contacto-input {
   color: var(--marron-oscuro);
   text-decoration: underline;
 }
+.auth-grupo-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+}
+
+.auth-grupo-check input[type="checkbox"] {
+  accent-color: var(--marron-oscuro);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.perfil-foto-placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: var(--marron-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-foto-placeholder i {
+  font-size: 60px;
+  color: var(--lavanda);
+}
 
 @media (max-width: 768px) {
   .auth-card {

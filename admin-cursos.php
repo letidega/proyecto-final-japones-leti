@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 require_once 'conexion.php';
 
 // Acceso restringido solo admin

@@ -1,13 +1,14 @@
 <?php
-
 session_start();
-
-include("header.php");
-
 require_once 'conexion.php';
 
-// Temporal hasta tener el login funcionando
-$id_usuario = 1;
+// Acceso restringido
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$id_usuario = $_SESSION['id_usuario'];
 
 // Datos del usuario
 $consultaUsuario = $conexion->prepare("SELECT * FROM usuarios WHERE id_usuario = :id_usuario");
@@ -19,6 +20,7 @@ $consultaCursos = $conexion->prepare("SELECT * FROM usuarios_cursos WHERE id_usu
 $consultaCursos->execute([':id_usuario' => $id_usuario]);
 $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
 
+include("header.php");
 ?>
 
 <section class="perfil-section">
@@ -31,7 +33,13 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
       <div class="perfil-card-inner">
 
         <div class="perfil-foto">
-          <img src="img/<?= $usuario['foto'] ?>" alt="Foto de perfil">
+          <?php if ($usuario['foto']) { ?>
+            <img src="img/<?= $usuario['foto'] ?>" alt="Foto de perfil">
+          <?php } else { ?>
+            <div class="perfil-foto-placeholder">
+              <i class="fa-solid fa-user"></i>
+            </div>
+          <?php } ?>
         </div>
 
         <div class="perfil-datos">
@@ -76,7 +84,6 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="perfil-calendario">
       <button class="cal-flecha cal-flecha-izq" aria-label="Mes anterior">&#8249;</button>
-
       <div class="cal-inner">
         <div class="cal-mes-header">
           <span id="cal-mes-titulo"></span>
@@ -87,7 +94,6 @@ $cursos = $consultaCursos->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="cal-dias" id="cal-dias"></div>
       </div>
-
       <button class="cal-flecha cal-flecha-der" aria-label="Mes siguiente">&#8250;</button>
     </div>
 

@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($emailExiste) {
         $error = "Ese correo electrónico ya está en uso por otro usuario.";
+
     } else {
 
         // Si ha introducido nueva contraseña
@@ -35,13 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error = "Las contraseñas no coinciden.";
             } else {
                 $nuevaPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $consultaUpdate = $conexion->prepare("UPDATE usuarios SET 
-                    nombre = :nombre,
-                    apellido = :apellido,
-                    telefono = :telefono,
-                    email = :email,
-                    password = :password
-                    WHERE id_usuario = :id_usuario");
+                $consultaUpdate = $conexion->prepare("UPDATE usuarios SET nombre = :nombre, apellido = :apellido, telefono = :telefono, email = :email, password = :password WHERE id_usuario = :id_usuario");
                 $consultaUpdate->execute([
                     ':nombre'     => $nombre,
                     ':apellido'   => $apellido,
@@ -56,12 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         } else {
             // Sin cambio de contraseña
-            $consultaUpdate = $conexion->prepare("UPDATE usuarios SET 
-                nombre = :nombre,
-                apellido = :apellido,
-                telefono = :telefono,
-                email = :email
-                WHERE id_usuario = :id_usuario");
+            $consultaUpdate = $conexion->prepare("UPDATE usuarios SET nombre = :nombre, apellido = :apellido, telefono = :telefono, email = :email WHERE id_usuario = :id_usuario");
             $consultaUpdate->execute([
                 ':nombre'     => $nombre,
                 ':apellido'   => $apellido,

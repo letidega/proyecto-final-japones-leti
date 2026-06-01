@@ -1,6 +1,14 @@
 <?php
+
 session_start();
+
 require_once 'conexion.php';
+
+// Si ya hay sesión activa redirigir a perfil
+if (isset($_SESSION['id_usuario'])) {
+    header('Location: mi-perfil.php');
+    exit;
+}
 
 $error = '';
 $exito = '';

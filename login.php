@@ -1,8 +1,12 @@
 <?php
-
 session_start();
-
 require_once 'conexion.php';
+
+// Si ya hay sesión activa redirigir a perfil
+if (isset($_SESSION['id_usuario'])) {
+    header('Location: mi-perfil.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -17,15 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         $_SESSION['nombre'] = $usuario['nombre'];
         $_SESSION['rol'] = $usuario['rol'];
+
+        // Cookie de recuérdame — dura 30 días
+        if (isset($_POST['recordarme'])) {
+            setcookie('recordarme_email', $email, time() + (30 * 24 * 60 * 60), '/');
+        }
+
         header('Location: mi-perfil.php');
         exit;
     } else {
         $error = "Email o contraseña incorrectos.";
     }
 }
-?>
 
-<?php include("header.php"); ?>
+include("header.php");
+?>
 
 <section class="auth-section">
   <div class="auth-bg">
@@ -41,12 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="auth-grupo">
           <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" name="email" class="auth-input" placeholder="ejemplo@correo.com">
+          <input type="email" id="email" name="email" class="auth-input"
+            placeholder="ejemplo@correo.com"
+            value="<?= isset($_COOKIE['recordarme_email']) ? $_COOKIE['recordarme_email'] : '' ?>">
         </div>
 
         <div class="auth-grupo">
           <label for="password">Contraseña</label>
           <input type="password" id="password" name="password" class="auth-input" placeholder="Contraseña">
+        </div>
+
+        <div class="auth-grupo-check">
+          <input type="checkbox" id="recordarme" name="recordarme">
+          <label for="recordarme">Recuérdame</label>
         </div>
 
         <div class="auth-submit">
