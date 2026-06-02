@@ -148,7 +148,7 @@
 
       <div class="col-12 col-md-3 text-center">
         <article class="lectura-item">
-          <img src="img/libro1.jpg" class="lectura-img" alt="Si los gatos desaparecieran del mundo — Genki Kawamura">
+          <img src="img/portada-gatos.jpg" class="lectura-img" alt="Si los gatos desaparecieran del mundo — Genki Kawamura">
           <p class="lectura-titulo">Si los gatos desaparecieran del mundo</p>
           <p class="lectura-autor">Genki Kawamura</p>
         </article>
@@ -156,7 +156,7 @@
 
       <div class="col-12 col-md-3 text-center">
         <article class="lectura-item">
-          <img src="img/libro2.jpg" class="lectura-img" alt="Kitchen — Banana Yoshimoto">
+          <img src="img/portada-kitchen.jpg" class="lectura-img" alt="Kitchen — Banana Yoshimoto">
           <p class="lectura-titulo">Kitchen</p>
           <p class="lectura-autor">Banana Yoshimoto</p>
         </article>
@@ -164,7 +164,7 @@
 
       <div class="col-12 col-md-3 text-center">
         <article class="lectura-item">
-          <img src="img/libro3.jpg" class="lectura-img" alt="La Dependienta — Sayaka Murata">
+          <img src="img/portada-dependienta.jpg" class="lectura-img" alt="La Dependienta — Sayaka Murata">
           <p class="lectura-titulo">La Dependienta</p>
           <p class="lectura-autor">Sayaka Murata</p>
         </article>
@@ -172,7 +172,7 @@
 
       <div class="col-12 col-md-3 text-center">
         <article class="lectura-item">
-          <img src="img/libro4.jpg" class="lectura-img" alt="Antes de que se enfríe el café — Toshikazu Kawaguchi">
+          <img src="img/portada-cafe.jpg" class="lectura-img" alt="Antes de que se enfríe el café — Toshikazu Kawaguchi">
           <p class="lectura-titulo">Antes de que se enfríe el café</p>
           <p class="lectura-autor">Toshikazu Kawaguchi</p>
         </article>

@@ -484,7 +484,7 @@ textarea.curso-input {
    ============================================================ */
 .hero {
   height: 100vh;
-  background: url('../img/home/portada-home.jpg') no-repeat center center;
+  background: url('../img/portada-home.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
 }
