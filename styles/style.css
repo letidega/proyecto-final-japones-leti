@@ -2714,13 +2714,14 @@ textarea.curso-input {
 .admin-section {
   background-color: var(--lavanda);
   min-height: 100vh;
-  padding: 120px 0 80px;
+  padding: 120px;
 }
 
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 100px;
   margin-bottom: 40px;
 }
 
