@@ -49,7 +49,7 @@ include("header.php");
       <?php foreach ($posts as $post) { ?>
         <div class="col-lg-3 col-md-6 col-6">
           <article class="lit-libro-card">
-            <img src="img/home/<?= $post['img'] ?>"
+            <img src="img/<?= $post['img'] ?>"
                  alt="<?= $post['titulo'] ?>"
                  class="lit-libro-img">
             <p class="lit-libro-categoria"><?= $post['categoria'] ?></p>

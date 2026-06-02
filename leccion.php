@@ -90,7 +90,7 @@ include("header-leccion.php");
           <?php foreach ($vocabulario as $vocab) { ?>
             <div class="vocab-item">
               <?php if ($vocab['img']) { ?>
-                <img src="img/vocab/<?= $vocab['img'] ?>" alt="<?= $vocab['traduccion'] ?>">
+                <img src="img/lecciones/<?= $vocab['img'] ?>" alt="<?= $vocab['traduccion'] ?>">
               <?php } ?>
               <p class="vocab-romaji"><?= $vocab['romaji'] ?></p>
               <p class="vocab-japones"><?= $vocab['palabra_japonesa'] ?></p>
@@ -209,7 +209,7 @@ include("header-leccion.php");
         <?php foreach ($culturas as $cultura) { ?>
           <div class="cultura-bloque">
             <?php if ($cultura['img']) { ?>
-              <img src="img/cultura/<?= $cultura['img'] ?>" alt="<?= $cultura['titulo'] ?>" class="cultura-img">
+              <img src="img/<?= $cultura['img'] ?>" alt="<?= $cultura['titulo'] ?>" class="cultura-img">
             <?php } ?>
             <h3 class="cultura-titulo"><?= $cultura['titulo'] ?></h3>
             <p class="cultura-contenido"><?= nl2br($cultura['contenido']) ?></p>
