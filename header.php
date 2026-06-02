@@ -31,7 +31,7 @@
       <ul class="navbar-nav mx-auto">
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Literatura japonesa</a>
+          <a class="nav-link" href="literatura-japonesa.php">Literatura japonesa</a>
         </li>
 
         <li class="nav-item">
@@ -58,7 +58,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
+          <a class="nav-link" href="blog.php">Blog</a>
         </li>
 
         <li class="nav-item">
@@ -85,9 +85,6 @@
             <i class="fa-solid fa-user"></i>
           </a>
         <?php } ?>
-        <a href="#" aria-label="Buscar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
       </div>
 
     </div>

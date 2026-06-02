@@ -169,3 +169,32 @@ function toggleFormulario(id) {
     form.style.display = 'none';
   }
 }
+
+// =============================================
+// SLIDER DE RESEÑAS
+// =============================================
+var resenas = document.querySelectorAll('.resena-item');
+var flechaIzq = document.getElementById('flecha-izq');
+var flechaDer = document.getElementById('flecha-der');
+var resenaActual = 0;
+
+function mostrarResena(indice) {
+  resenas.forEach(function(r) {
+    r.classList.remove('active');
+  });
+  resenas[indice].classList.add('active');
+}
+
+if (flechaDer) {
+  flechaDer.addEventListener('click', function() {
+    resenaActual = (resenaActual + 1) % resenas.length;
+    mostrarResena(resenaActual);
+  });
+}
+
+if (flechaIzq) {
+  flechaIzq.addEventListener('click', function() {
+    resenaActual = (resenaActual - 1 + resenas.length) % resenas.length;
+    mostrarResena(resenaActual);
+  });
+}

@@ -5,7 +5,7 @@ include("header.php");
 require_once 'conexion.php';
 
 // Consulta libros
-$consultaLibros = $conexion->prepare("SELECT * FROM libros LIMIT 5");
+$consultaLibros = $conexion->prepare("SELECT * FROM libros ORDER BY id_libro DESC LIMIT 5");
 $consultaLibros->execute();
 $libros = $consultaLibros->fetchAll(PDO::FETCH_ASSOC);
 
@@ -35,19 +35,19 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(1).jpg" class="rounded-circle mb-3 w-50" alt="Aprende a tu ritmo">
+        <img src="img/por-que-elegirnos(1).jpg" class="rounded-circle mb-3 w-50" alt="Aprende a tu ritmo">
         <p>Aprende a tu ritmo, sin horarios</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(3).jpg" class="rounded-circle mb-3 w-50" alt="Lecciones claras">
+        <img src="img/por-que-elegirnos(3).jpg" class="rounded-circle mb-3 w-50" alt="Lecciones claras">
         <p>Lecciones claras y estructuradas</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(4).jpg" class="rounded-circle mb-3 w-50" alt="Ejercicios interactivos">
+        <img src="img/por-que-elegirnos(4).jpg" class="rounded-circle mb-3 w-50" alt="Ejercicios interactivos">
         <p>Ejercicios interactivos</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(2).jpg" class="rounded-circle mb-3 w-50" alt="Acompañamiento cercano">
+        <img src="img/por-que-elegirnos(2).jpg" class="rounded-circle mb-3 w-50" alt="Acompañamiento cercano">
         <p>Acompañamiento cercano de tu profesora</p>
       </div>
     </div>
@@ -67,7 +67,7 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
         <a href="cursos.php" class="boton-ver-cursos">Ver cursos</a>
       </div>
       <div class="col-md-6 order-1 order-md-2 text-center">
-        <img src="img/home/metodo.jpg" class="img-fluid" alt="Método de aprendizaje Japonés con Leti">
+        <img src="img/metodo.jpg" class="img-fluid" alt="Método de aprendizaje Japonés con Leti">
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
       <?php $primero = true; ?>
       <?php foreach ($libros as $libro) { ?>
         <div class="option <?= $primero ? 'active' : '' ?>" 
-             style="--bg:url('../img/home/<?= $libro['img'] ?>')">
+             style="--bg:url('../img/<?= $libro['img'] ?>')">
           <div class="overlay-text">
             <h3><?= $libro['titulo'] ?></h3>
             <span><?= $libro['autor'] ?></span>
@@ -110,7 +110,7 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
 
       <?php foreach ($posts as $post) { ?>
         <div class="col-md-3">
-          <img src="img/home/<?= $post['img'] ?>" class="img-fluid mb-2" alt="<?= $post['titulo'] ?>">
+          <img src="img/<?= $post['img'] ?>" class="img-fluid mb-2" alt="<?= $post['titulo'] ?>">
           <p><?= $post['categoria'] ?></p>
           <h3><?= $post['titulo'] ?></h3>
         </div>
@@ -123,17 +123,49 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
 <!-- RESEÑAS -->
 <section class="resenas text-center">
   <div class="resenas-contenido">
-    <i class="fa-solid fa-chevron-left flecha izquierda" aria-hidden="true"></i>
+
+    <i class="fa-solid fa-chevron-left flecha izquierda" id="flecha-izq" aria-label="Reseña anterior"></i>
+
     <div class="container">
       <h2>RESEÑAS</h2>
-      <p class="stars">★★★★★</p>
-      <p class="nombre-cliente">Carlos P.</p>
-      <p class="resena">
-        "Siempre quise aprender japonés, pero nunca encajaba con horarios ni clases en vídeo.
-        Aquí puedo estudiar cuando quiero y entender de verdad lo que estoy aprendiendo."
-      </p>
+
+      <div class="resenas-slider">
+
+        <div class="resena-item active">
+          <p class="stars">★★★★★</p>
+          <p class="nombre-cliente">Carlos P.</p>
+          <p class="resena">"Siempre quise aprender japonés, pero nunca encajaba con horarios ni clases en vídeo. Aquí puedo estudiar cuando quiero y entender de verdad lo que estoy aprendiendo."</p>
+        </div>
+
+        <div class="resena-item">
+          <p class="stars">★★★★★</p>
+          <p class="nombre-cliente">María L.</p>
+          <p class="resena">"Las lecciones están muy bien estructuradas y se nota que hay mucho cariño detrás. Leti explica todo con una claridad increíble. Lo recomiendo a cualquiera que quiera aprender japonés de verdad."</p>
+        </div>
+
+        <div class="resena-item">
+          <p class="stars">★★★★★</p>
+          <p class="nombre-cliente">Alejandro R.</p>
+          <p class="resena">"Llevaba años queriendo aprender japonés y no encontraba la forma. Con Japonés con Leti por fin siento que avanzo. El ritmo es perfecto y nunca me siento perdido."</p>
+        </div>
+
+        <div class="resena-item">
+          <p class="stars">★★★★☆</p>
+          <p class="nombre-cliente">Sofia M.</p>
+          <p class="resena">"Me encanta que puedo aprender a mi propio ritmo sin presión. El contenido es muy completo y los ejercicios me ayudan mucho a afianzar lo que voy aprendiendo."</p>
+        </div>
+
+        <div class="resena-item">
+          <p class="stars">★★★★★</p>
+          <p class="nombre-cliente">Javier T.</p>
+          <p class="resena">"La mejor plataforma para aprender japonés en español que he encontrado. Leti tiene una forma de explicar las cosas que hace que todo tenga sentido desde el principio."</p>
+        </div>
+
+      </div>
     </div>
-    <i class="fa-solid fa-chevron-right flecha derecha" aria-hidden="true"></i>
+
+    <i class="fa-solid fa-chevron-right flecha derecha" id="flecha-der" aria-label="Siguiente reseña"></i>
+
   </div>
 </section>
 

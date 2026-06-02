@@ -647,6 +647,24 @@ p {
 .flecha.izquierda { left: 0; }
 .flecha.derecha   { right: 0; }
 
+.resenas-slider {
+  position: relative;
+}
+
+.resena-item {
+  display: none;
+}
+
+.resena-item.active {
+  display: block;
+  animation: fadeResena 0.4s ease;
+}
+
+@keyframes fadeResena {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 768px) {
   .resenas .container {
     max-width: 100%;
