@@ -105,6 +105,30 @@ p {
   color: var(--marron-oscuro);
 }
 
+/* Sombra en los links del header normal */
+.navbar .nav-link,
+.navbar .navbar-icons a i {
+  text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.542);
+  transition: text-shadow 0.2s;
+}
+
+.navbar .nav-link:hover {
+  text-shadow: none;
+}
+
+/* Sombra en los links del header dark */
+.navbar .navbar-nav .nav-link-izq,
+.navbar .navbar-nav .nav-link-der,
+.navbar-dark-version .navbar-icons a i {
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  transition: text-shadow 0.2s;
+}
+
+.navbar .navbar-nav .nav-link-izq:hover,
+.navbar .navbar-nav .nav-link-der:hover {
+  text-shadow: none;
+}
+
 /* ============================================================
    NAV — HEADER CLARO (header.php)
    ============================================================ */
@@ -783,7 +807,7 @@ p {
 .hero-overlay {
   position: absolute;
   inset: 0;            /* ocupa toda la imagen */
-  background-color: rgba(255, 255, 255, 0.3);  /* blanco al 30% de opacidad */
+  background-color: rgba(255, 255, 255, 0.563);  /* blanco al 30% de opacidad */
   z-index: 1;
 }
 
@@ -2037,12 +2061,20 @@ textarea.curso-input {
 .contacto-hero-right {
   width: 50%;
   overflow: hidden;
+  position: relative;
 }
 
 .contacto-hero-right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.contacto-hero-right::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.384);
 }
 
 .contacto-form {
@@ -3300,7 +3332,7 @@ input[type="file"].admin-input::file-selector-button:hover {
 .lit-hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.563);
 }
 
 /* LITERATURA JAPONESA — LISTADO */

@@ -61,25 +61,25 @@ include("header.php");
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- POR QUÉ ELEGIRNOS -->
 <section class="elegirnos py-5 text-center">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(1).jpg" class="rounded-circle mb-3 w-50" alt="Aprende a tu ritmo">
-        <p>APRENDE A TU RITMO, SIN HORARIOS</p>
+        <img src="img/por-que-elegirnos(1).jpg" class="rounded-circle mb-3 w-50" alt="Aprende a tu ritmo">
+        <p>Aprende a tu ritmo, sin horarios</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(3).jpg" class="rounded-circle mb-3 w-50" alt="Lecciones escritas">
-        <p>LECCIONES ESCRITAS CLARAS Y ESTRUCTURADAS</p>
+        <img src="img/por-que-elegirnos(3).jpg" class="rounded-circle mb-3 w-50" alt="Lecciones claras">
+        <p>Lecciones claras y estructuradas</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(4).jpg" class="rounded-circle mb-3 w-50" alt="Ejercicios interactivos">
-        <p>EJERCICIOS INTERACTIVOS Y AUTOCORREGIBLES</p>
+        <img src="img/por-que-elegirnos(4).jpg" class="rounded-circle mb-3 w-50" alt="Ejercicios interactivos">
+        <p>Ejercicios interactivos</p>
       </div>
       <div class="col-md-3">
-        <img src="img/home/por-que-elegirnos(2).jpg" class="rounded-circle mb-3 w-50" alt="Acompañamiento cercano">
-        <p>ACOMPAÑAMIENTO CERCANO DE TU PROFESORA</p>
+        <img src="img/por-que-elegirnos(2).jpg" class="rounded-circle mb-3 w-50" alt="Acompañamiento cercano">
+        <p>Acompañamiento cercano de tu profesora</p>
       </div>
     </div>
   </div>

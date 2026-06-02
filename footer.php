@@ -15,9 +15,9 @@
       <div class="col-md-2 mb-4 text-center">
         <h4>ACADEMIA</h4>
         <ul>
-          <li><a href="sobre-mi.php">Sobre Nosotros</a></li>
-          <li><a href="#">Literatura Japonesa</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="sobre-mi.php">Sobre Nosotras</a></li>
+          <li><a href="literatura-japonesa.php">Literatura Japonesa</a></li>
+          <li><a href="blog.php">Blog</a></li>
           <li><a href="#">Preguntas Frecuentes</a></li>
         </ul>
       </div>
@@ -27,8 +27,8 @@
         <h4>FORMACIÓN</h4>
         <ul>
           <li><a href="cursos.php">Cursos</a></li>
-          <li><a href="#">Aula Virtual</a></li>
-          <li><a href="#">Mi Perfil</a></li>
+          <li><a href="aula-virtual.php">Aula Virtual</a></li>
+          <li><a href="mi-perfil.php">Mi Perfil</a></li>
         </ul>
       </div>
 

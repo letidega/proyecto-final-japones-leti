@@ -99,7 +99,6 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 <!-- BLOG -->
-<!-- BLOG -->
 <section class="blog">
   <div class="container">
     <div class="d-flex justify-content-between mb-4 align-items-center">
