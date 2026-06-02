@@ -65,16 +65,22 @@ include("header.php");
       </div>
 
       <div class="perfil-suscripcion">
-        <p class="perfil-suscripcion-label">MI SUSCRIPCIÓN</p>
-        <p class="perfil-suscripcion-texto">
-          Actualmente estás disfrutando de la suscripción gratuita de Japonés con Leti.
-          Si deseas obtener recursos adicionales, contenido exclusivo y seguimiento personalizado,
-          puedes actualizar en cualquier momento suscribiéndote a uno de nuestros
-          <a href="#" class="perfil-planes-link">planes premium.</a>
-        </p>
-        <div class="text-center mt-4">
-          <a href="aula-virtual.php" class="btn miBoton">ACCEDER A MI AULA</a>
-        </div>
+          <p class="perfil-suscripcion-label">MI SUSCRIPCIÓN</p>
+          <p class="perfil-suscripcion-texto">
+            Actualmente estás disfrutando de la suscripción gratuita de Japonés con Leti.
+            Si deseas obtener recursos adicionales, contenido exclusivo y seguimiento personalizado,
+            puedes actualizar en cualquier momento suscribiéndote a uno de nuestros
+            <a href="#" class="perfil-planes-link">planes premium.</a>
+          </p>
+          <div class="text-center mt-4">
+            <a href="aula-virtual.php" class="btn miBoton">ACCEDER A MI AULA</a>
+          </div>
+          <!-- Botón de administrar cursos en caso de ser admin -->
+            <?php if ($_SESSION['rol'] == 'admin') { ?>
+                    <div class="text-center mt-3">
+                      <a href="admin-cursos.php" class="btn miBoton">Administrar cursos</a>
+                    </div>
+                  <?php } ?>
       </div>
 
     </div>
