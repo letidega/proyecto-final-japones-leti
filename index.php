@@ -103,7 +103,7 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
   <div class="container">
     <div class="d-flex justify-content-between mb-4 align-items-center">
       <h2>BLOG</h2>
-      <a href="#" class="btn miBoton">Mostrar más</a>
+      <a href="blog.php" class="btn miBoton">Mostrar más</a>
     </div>
     <div class="row g-4">
 

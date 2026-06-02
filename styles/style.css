@@ -1,6 +1,5 @@
 /* JAPONÉS CON LETI: Paleta, tipografía y estilos unificados */
 
-
 /* VARIABLES COLOR */
 :root {
   --lavanda: #F7EFF1;
@@ -1389,7 +1388,7 @@ textarea.curso-input {
 .curso-ind-hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.774);
+  background-color: rgba(255, 255, 255, 0.737);
 }
 
 .curso-ind-hero-content {
@@ -2961,33 +2960,37 @@ input[type="file"].admin-input::file-selector-button:hover {
 /* Ilustraciones flotantes — compartidas con blog */
 .lit-deco {
   position: absolute;
-  top: 0;
-  bottom: 0;
   z-index: 0;
-  display: flex;
-  align-items: center;
   pointer-events: none;
 }
 
-.lit-deco-izq { left: -100px; }
-.lit-deco-der { right: -100px; }
+.lit-deco-izq {
+  left: -100px;
+  bottom: 40px;
+}
 
+.lit-deco-der {
+  right: -100px;
+  top: 40px;
+}
+
+/* Cambia estos valores en style.css */
 .lit-deco img {
   width: 380px;
   height: auto !important;
   display: block;
   mix-blend-mode: multiply;
-  opacity: 0.35;
+  opacity: 0.9;        
 }
 
 @keyframes flotar-lit-izq {
-  0%, 100% { transform: translateX(0px); }
-  50%       { transform: translateX(18px); }
+  0%, 100% { transform: translateX(50px); }
+  50%       { transform: translateX(100px); }  
 }
 
 @keyframes flotar-lit-der {
-  0%, 100% { transform: translateX(0px); }
-  50%       { transform: translateX(-18px); }
+  0%, 100% { transform: translateX(-50px); }
+  50%       { transform: translateX(-100px); } 
 }
 
 .lit-deco-izq img { animation: flotar-lit-izq 6s ease-in-out infinite; }
