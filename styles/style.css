@@ -1,32 +1,25 @@
-/* JAPONÉS CON LETI: Paleta, tipografía y estilos unificados*/
+/* JAPONÉS CON LETI: Paleta, tipografía y estilos unificados */
 
 
-/* PALETA DE COLORES */
+/* VARIABLES COLOR */
 :root {
-  /* COLORES PRINCIPALES */
-  --lavanda: #F7EFF1;        /* Lavender Blush */
-  --rosa: #EBD1DC;           /* Creamy Freesia */
-  --marron-claro: #CEB1BE;   /* Candlelight Dinner */
-
-  /* COLORES OSCUROS */
-  --marron-oscuro: #675861;  /* Urban Legend */
-  --negro: #2D2D34;          /* Bastille */
-
-  /* Tipografías */
+  --lavanda: #F7EFF1;
+  --rosa: #EBD1DC;
+  --marron-claro: #CEB1BE;
+  --marron-oscuro: #675861;
+  --negro: #2D2D34;
   --font-serif: "Playfair Display", serif;
   --font-sans: "Manrope", sans-serif;
 }
 
 
-/* RESET */
+/* RESET & BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-/* ESTILOS GENERALES */
 a {
   text-decoration: none;
 }
@@ -53,8 +46,69 @@ p {
 }
 
 
+/* INPUT - compartido por todos los formularios (contacto, curso, auth, registro, editar-perfil, admin) */
+.contacto-input,
+.curso-input,
+.auth-input,
+.registro-input,
+.editar-perfil-input,
+.admin-input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--negro);
+  outline: none;
+  padding: 12px 16px;
+}
+
+.contacto-input::placeholder,
+.curso-input::placeholder,
+.auth-input::placeholder,
+.registro-input::placeholder,
+.editar-perfil-input::placeholder,
+.admin-input::placeholder {
+  color: rgba(103, 88, 97, 0.5);
+}
+
+.contacto-input:focus,
+.curso-input:focus,
+.auth-input:focus,
+.registro-input:focus,
+.admin-input:focus {
+  outline: 1px solid var(--marron-oscuro);
+}
+
+.editar-perfil-input:focus {
+  outline: 1px solid var(--marron-oscuro);
+}
+
+.contacto-input {
+  padding: 10px 14px;
+}
+
+.curso-input:focus {
+  outline: 2px solid var(--marron-oscuro);
+}
+
+textarea.contacto-input {
+  height: 80px;
+  resize: none;
+}
+
+textarea.curso-input {
+  height: 100px;
+  resize: none;
+}
+
+.editar-perfil-input {
+  background-color: var(--lavanda);
+}
+
+
 /* ============================================================
-   NAV — COMPARTIDO
+   NAVBAR COMPARTIDO
    ============================================================ */
 .navbar {
   position: absolute;
@@ -73,9 +127,17 @@ p {
   gap: 30px;
 }
 
+.navbar-brand img {
+  filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.30));
+}
+
 .navbar-saludo {
   font-family: var(--font-sans);
   font-size: 14px;
+  color: var(--marron-oscuro);
+}
+
+.navbar-dark-version .navbar-saludo {
   color: var(--marron-oscuro);
 }
 
@@ -92,20 +154,7 @@ p {
   color: var(--marron-oscuro);
 }
 
-/* Saludo navbar */
-/* header normal */
-.navbar-saludo {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--rosa);
-}
-
-/* Saludo navbar — header dark */
-.navbar-dark-version .navbar-saludo {
-  color: var(--marron-oscuro);
-}
-
-/* Sombra en los links del header normal */
+/* Sombras texto nav */
 .navbar .nav-link,
 .navbar .navbar-icons a i {
   text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.542);
@@ -116,7 +165,6 @@ p {
   text-shadow: none;
 }
 
-/* Sombra en los links del header dark */
 .navbar .navbar-nav .nav-link-izq,
 .navbar .navbar-nav .nav-link-der,
 .navbar-dark-version .navbar-icons a i {
@@ -129,8 +177,9 @@ p {
   text-shadow: none;
 }
 
+
 /* ============================================================
-   NAV — HEADER CLARO (header.php)
+   NAVBAR — HEADER CLARO
    ============================================================ */
 .navbar .nav-link {
   color: var(--marron-oscuro);
@@ -138,7 +187,6 @@ p {
   font-weight: 500;
   padding: 6px 14px !important;
   transition: background-color 0.2s, color 0.2s;
-  
 }
 
 .navbar .nav-link:hover,
@@ -157,15 +205,10 @@ p {
   opacity: 0.7;
 }
 
-.navbar-brand img {
-  filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.30));
-}
 
 /* ============================================================
-   NAV — HEADER DARK (header-dark.php)
+   NAVBAR — HEADER DARK
    ============================================================ */
-
-/* Links lado izquierdo — texto rosa, hover rosa con texto marrón */
 .navbar .navbar-nav .nav-link-izq {
   color: var(--rosa) !important;
   font-size: 15px;
@@ -181,7 +224,6 @@ p {
   color: var(--marron-oscuro) !important;
 }
 
-/* Links lado derecho — texto marrón, hover marrón con texto rosa */
 .navbar .navbar-nav .nav-link-der {
   color: var(--marron-oscuro) !important;
   font-size: 15px;
@@ -209,7 +251,7 @@ p {
 
 
 /* ============================================================
-   DROPDOWN — COMPARTIDO PARA AMBOS HEADERS
+   DROPDOWN
    ============================================================ */
 .dropdown-menu {
   position: absolute;
@@ -261,8 +303,9 @@ p {
   }
 }
 
+
 /* ============================================================
-   NAV — MÓVIL (compartido para ambos headers)
+   NAVBAR — MÓVIL
    ============================================================ */
 @media (max-width: 992px) {
   .navbar-collapse {
@@ -319,20 +362,146 @@ p {
   }
 }
 
-/* ============================================================
-   HOME 
-   ============================================================ */
 
-   /* HERO */
+/* ============================================================
+   BOTÓN miBoton
+   ============================================================ */
+.miBoton {
+  position: relative;
+  background-color: var(--marron-oscuro);
+  color: white;
+  border-radius: 6px;
+  padding: 8px 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.miBoton:hover {
+  background-color: transparent;
+  color: var(--marron-oscuro);
+}
+
+.miBoton::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -6px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--marron-oscuro);
+  border-radius: 6px;
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+
+.miBoton:hover::after {
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 576px) {
+  .miBoton {
+    padding: 8px 40px;
+    font-size: 0.85rem;
+  }
+
+  .miBoton::after {
+    top: 4px;
+    left: -4px;
+  }
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--marron-oscuro);
+  color: var(--lavanda);
+}
+
+.footer .container {
+  padding-top: 70px;
+  padding-bottom: 40px;
+}
+
+.footer h4 {
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+  font-family: var(--font-serif);
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer ul li a {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  text-decoration: none;
+  color: var(--lavanda);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer ul li a:hover {
+  color: var(--rosa);
+}
+
+.social-icons i {
+  font-size: 1.2rem;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  opacity: 0.7;
+}
+
+.footer-bottom {
+  background-color: var(--rosa);
+  color: var(--marron-oscuro);
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+}
+
+
+/* ============================================================
+   HOME — HERO
+   ============================================================ */
 .hero {
   height: 100vh;
-  background:   url('../img/home/portada-home.jpg') no-repeat center center;
+  background: url('../img/home/portada-home.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 180, 185, 0.73);
+}
+
 .hero .container {
   width: 95%;
+  position: relative;
+  z-index: 2;
 }
 
 .hero span.subtitulo {
@@ -350,19 +519,6 @@ p {
 .hero h1 {
   color: var(--marron-oscuro);
   font-size: 80px;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(200, 180, 185, 0.73);
-}
-
-.hero .container {
-  position: relative;
-  z-index: 2;
 }
 
 .boton-contacto {
@@ -521,75 +677,11 @@ p {
   font-family: var(--font-sans);
 }
 
-.miBoton {
-  position: relative;
-  background-color: var(--marron-oscuro);
-  color: white;
-  border-radius: 6px;
-  padding: 8px 60px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  z-index: 2;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  text-transform: uppercase;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.miBoton:hover {
-  background-color: transparent;   /* se queda sin fondo */
-  color: var(--marron-oscuro);      /* texto cambia a marrón */
-}
-
-/* Marco decorativo desplazado — el que se ve detrás */
-.miBoton::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: -6px;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--marron-oscuro);
-  border-radius: 6px;
-  z-index: -1;
-  transition: all 0.6s ease;
-}
-
-.miBoton:hover::after {
-  top: 0px;
-  left: 0px;
-}
-
-@media (max-width: 576px) {
-  .miBoton {
-    padding: 8px 40px;
-    font-size: 0.85rem;
-  }
-
-  .miBoton::after {
-    top: 4px;
-    left: -4px;
-  }
-}
-
 @media (max-width: 768px) {
-  .literatura .options {
-    height: 250px;
-  }
-
-  .literatura .option {
-    border-radius: 20px;
-  }
-
-  .literatura h3 {
-    font-size: 1rem;
-  }
-
-  .literatura p {
-    font-size: 0.8rem;
-  }
+  .literatura .options { height: 250px; }
+  .literatura .option { border-radius: 20px; }
+  .literatura h3 { font-size: 1rem; }
+  .literatura p { font-size: 0.8rem; }
 }
 
 
@@ -704,92 +796,54 @@ p {
 
 
 /* ============================================================
-   FOOTER
+   HERO COMPARTIDO — cursos, sobre mí, lit japonesa, blog
    ============================================================ */
-.footer {
-  background-color: var(--marron-oscuro);
-  color: var(--lavanda);
-}
-
-.footer .container {
-  padding-top: 70px;
-  padding-bottom: 40px;
-}
-
-.footer h4 {
-  font-size: 1rem;
-  letter-spacing: 1.5px;
-  margin-bottom: 15px;
-  font-family: var(--font-serif);
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer ul li {
-  margin-bottom: 8px;
-}
-
-.footer ul li a {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  text-decoration: none;
-  color: var(--lavanda);
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.footer ul li a:hover {
-  color: var(--rosa);
-}
-
-.social-icons i {
-  font-size: 1.2rem;
-  margin-right: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.social-icons i:hover {
-  opacity: 0.7;
-}
-
-.footer-bottom {
-  background-color: var(--rosa);
-  color: var(--marron-oscuro);
-  font-size: 0.75rem;
-  font-family: var(--font-sans);
-}
-
-
-/* ============================================================
-   CURSOS 
-   ============================================================ */
-
-/* HERO CURSOS */
-.cursos-hero {
+.cursos-hero,
+.sobre-hero,
+.lit-hero {
   height: 100vh;
   overflow: hidden;
 }
 
-.cursos-hero-left {
+.cursos-hero-left,
+.sobre-hero-left,
+.lit-hero-left {
   width: 50%;
-  background-color: var(--marron-oscuro); 
   padding: 50px 60px;
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
 }
 
+/* Colores específicos de cada hero */
+.cursos-hero-left { background-color: var(--marron-oscuro); }
+.sobre-hero-left  { background-color: var(--marron-oscuro); }
+.lit-hero-left    { background-color: var(--marron-claro); }
+
+/* Títulos */
 .cursos-hero-content h1 {
   font-size: 70px;
-  color: var(--lavanda);     
+  color: var(--lavanda);
   margin-bottom: 30px;
   font-weight: 600;
 }
 
+.sobre-hero-content h1 {
+  font-size: 70px;
+  color: var(--rosa);
+  margin-bottom: 16px;
+}
+
+.lit-hero-content h1 {
+  font-family: var(--font-serif);
+  font-size: 70px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+/* Párrafos */
 .cursos-hero-content p {
   font-size: 15px;
   line-height: 26px;
@@ -797,75 +851,103 @@ p {
   margin-bottom: 30px;
 }
 
-.cursos-hero-right {
+.sobre-hero-content p {
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--lavanda);
+  margin-bottom: 40px;
+}
+
+.lit-hero-content p {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 28px;
+  color: var(--negro);
+}
+
+/* Lado derecho — compartido */
+.cursos-hero-right,
+.sobre-hero-right,
+.lit-hero-right {
   width: 50%;
   flex-shrink: 0;
+  position: relative;
   overflow: hidden;
 }
 
-.cursos-hero-right,
-.sobre-hero-right {
-  position: relative;  /* necesario para que el overlay se posicione dentro */
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;            /* ocupa toda la imagen */
-  background-color: rgba(255, 255, 255, 0.563);  /* blanco al 30% de opacidad */
-  z-index: 1;
-}
-
-.cursos-hero-right img {
+.cursos-hero-right img,
+.sobre-hero-right img,
+.lit-hero-right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
 }
 
+/* Overlay blanco */
+.hero-overlay,
+.lit-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.563);
+  z-index: 1;
+}
+
+/* Hero móvil — compartido */
 @media (max-width: 768px) {
-  .cursos-hero {
+  .cursos-hero,
+  .sobre-hero,
+  .lit-hero {
     flex-direction: column;
-    width: 100%;
     height: 100vh;
+    width: 100%;
   }
 
-  .cursos-hero-right {
+  .cursos-hero-right,
+  .sobre-hero-right,
+  .lit-hero-right {
     order: 1;
     width: 100%;
     height: 75vh;
     flex: 1;
   }
 
-  .cursos-hero-right img {
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .cursos-hero-left {
+  .cursos-hero-left,
+  .sobre-hero-left,
+  .lit-hero-left {
     order: 2;
     width: 100%;
-    height: 30vh;
     padding: 30px 24px;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
     flex-direction: column;
   }
 
-  .cursos-hero-content h1 {
+  .cursos-hero-left { height: 30vh; justify-content: flex-start; }
+  .sobre-hero-left  { height: 25vh; justify-content: flex-start; }
+
+  .cursos-hero-content h1,
+  .sobre-hero-content h1,
+  .lit-hero-content h1 {
     font-size: 36px;
     margin-bottom: 10px;
   }
 
-  .cursos-hero-content p {
+  .cursos-hero-content p,
+  .sobre-hero-content p {
     font-size: 14px;
     line-height: 22px;
   }
+
+  .cursos-hero-right img { height: 70vh; }
+  .lit-hero-right { height: 300px; }
+  .lit-hero-content h1 { font-size: 48px; }
 }
 
-/* CURSOS — LISTADO */
+
+/* ============================================================
+   CURSOS — LISTADO
+   ============================================================ */
 .cursos-listado {
   background-color: var(--marron-claro);
   position: relative;
@@ -877,7 +959,6 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .cursos-listado-overlay {
@@ -944,14 +1025,15 @@ p {
   font-size: 15px;
 }
 
-.cursos-cta{
-  h3{
-    margin-top: 30px;
-    color: var(--lavanda);
-  }
+.cursos-cta h3 {
+  margin-top: 30px;
+  color: var(--lavanda);
 }
 
-/* CURSOS — RECURSOS GRATUITOS */
+
+/* ============================================================
+   RECURSOS GRATUITOS
+   ============================================================ */
 .recursos-section {
   background-color: var(--lavanda);
   padding: 150px 0;
@@ -991,15 +1073,45 @@ p {
   line-height: 24px;
 }
 
+.recursos-deco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.recursos-deco-izq { left: -60px; }
+.recursos-deco-der { right: -60px; }
+
+.recursos-deco img {
+  width: 300px;
+  height: auto !important;
+  display: block;
+}
+
+@keyframes flotar-izq {
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(40px); }
+}
+
+@keyframes flotar-der {
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(-25px); }
+}
+
+.recursos-deco-izq img { animation: flotar-izq 5s ease-in-out infinite; }
+.recursos-deco-der img { animation: flotar-der 5s ease-in-out infinite; }
+
 @media (max-width: 768px) {
   .recursos-inner {
-    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .recursos-btn-wrapper {
-    order: 3;              /* el botón va al final */
+    order: 3;
     justify-content: center;
     margin-top: 10px;
   }
@@ -1009,169 +1121,17 @@ p {
     font-size: 36px;
   }
 
-  .recursos-inner p {
-    order: 2;
-  }
+  .recursos-inner p { order: 2; }
+
+  .recursos-deco-izq { left: -80px; }
+  .recursos-deco-der { right: -80px; }
+  .recursos-deco img { width: 220px; }
 }
 
-/* Ilustraciones laterales */
-.recursos-deco {
-  position: absolute;
-  top: 0;
-  bottom: 0;         
-  z-index: 1;
-  display: flex;
-  align-items: center;
-}
-
-.recursos-deco-izq {
-  left: -60px;
-}
-
-.recursos-deco-der {
-  right: -60px;
-}
-
-.recursos-deco img {
-  width: 300px;
-  height: auto !important;
-  display: block;
-}
-
-/* ANIMACIÓN FLOTANTE */
-@keyframes flotar-izq {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(40px); }
-  100% { transform: translateX(0px); }
-}
-
-@keyframes flotar-der {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(-25px); }
-  100% { transform: translateX(0px); }
-}
-
-.recursos-deco-izq img {
-  animation: flotar-izq 5s ease-in-out infinite;
-}
-
-.recursos-deco-der img {
-  animation: flotar-der 5s ease-in-out infinite;
-}
-
-@media (max-width: 768px) {
-  .recursos-deco-izq {
-    left: -80px;
-  }
-
-  .recursos-deco-der {
-    right: -80px;
-  }
-
-  .recursos-deco img {
-    width: 220px;
-  }
-
-  .recursos-inner h2 {
-    font-size: 36px;
-  }
-
-  .recursos-btn-wrapper {
-    justify-content: center;
-  }
-}
 
 /* ============================================================
-   SOBRE MÍ
+   SOBRE MÍ — INTRO
    ============================================================ */
-
-   /* HERO */
-.sobre-hero {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.sobre-hero-left {
-  width: 50%;
-  background-color: var(--marron-oscuro);
-  padding: 50px 60px 60px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-end;
-}
-
-.sobre-hero-content h1 {
-  font-size: 70px;
-  color: var(--rosa);
-  margin-bottom: 16px;
-}
-
-.sobre-hero-content p {
-  font-size: 15px;
-  line-height: 26px;
-  color: var(--lavanda);
-  margin-bottom: 40px;
-}
-
-.sobre-hero-right {
-  width: 50%;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.sobre-hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-@media (max-width: 768px) {
-  .sobre-hero {
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-  }
-
-  .sobre-hero-right {
-    order: 1;
-    width: 100%;
-    height: 75vh;
-    flex: 1;
-  }
-
-  .sobre-hero-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .sobre-hero-left {
-    order: 2;
-    width: 100%;
-    height: 25vh;
-    padding: 30px 24px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: start;   
-    flex-direction: column;      
-  }
-
-  .sobre-hero-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-
-  .sobre-hero-content p {
-    font-size: 14px;
-    line-height: 22px;
-  }
-}
-
-
-/* SOBRE MÍ — INTRO */
 .sobre-intro {
   background-color: var(--lavanda);
   padding: 80px 0;
@@ -1211,31 +1171,17 @@ p {
 }
 
 @media (max-width: 768px) {
-  .sobre-intro-inner {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sobre-deco-left {
-    order: 1;
-  }
-
-  .sobre-intro-text {
-    order: 2;
-  }
-
-  .sobre-deco-right {
-    order: 3;
-  }
-
-  .sobre-deco-left img,
-  .sobre-deco-right img {
-    width: 170px;
-    height: auto;
-  }
+  .sobre-intro-inner { flex-direction: column; align-items: center; }
+  .sobre-deco-left { order: 1; }
+  .sobre-intro-text { order: 2; }
+  .sobre-deco-right { order: 3; }
+  .sobre-deco-left img, .sobre-deco-right img { width: 170px; }
 }
 
-/* SOBRE MÍ - TIMELINE */
+
+/* ============================================================
+   SOBRE MÍ — TIMELINE
+   ============================================================ */
 .sobre-timeline {
   background-color: var(--marron-claro);
   padding: 80px 0;
@@ -1249,7 +1195,11 @@ p {
   letter-spacing: 2px;
 }
 
-/* Línea central */
+.sobre-timeline .container {
+  position: relative;
+  z-index: 1;
+}
+
 .timeline-wrapper {
   position: relative;
   max-width: 900px;
@@ -1266,7 +1216,6 @@ p {
   transform: translateX(-50%);
 }
 
-/* Filas */
 .timeline-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1288,7 +1237,6 @@ p {
   text-align: left;
 }
 
-/* Texto */
 .timeline-year {
   font-family: var(--font-serif);
   font-size: 22px;
@@ -1319,13 +1267,6 @@ p {
   font-family: var(--font-serif);
 }
 
-/* Asegura que el contenido esté por encima de las ilustraciones */
-.sobre-timeline .container {
-  position: relative;
-  z-index: 1;
-}
-
-/* Ilustraciones decorativas */
 .timeline-deco {
   position: absolute;
   z-index: 0;
@@ -1340,43 +1281,24 @@ p {
   opacity: 0.5;
 }
 
-.timeline-deco-der {
-  top: 0;
-  right: -40px;
-}
-
-.timeline-deco-izq {
-  bottom: 0;
-  left: -40px;
-}
+.timeline-deco-der { top: 0; right: -40px; }
+.timeline-deco-izq { bottom: 0; left: -40px; }
 
 @keyframes flotar-timeline-der {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(-40px); }
-  100% { transform: translateX(0px); }
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(-40px); }
 }
 
 @keyframes flotar-timeline-izq {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(40px); }
-  100% { transform: translateX(0px); }
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(40px); }
 }
 
-.timeline-deco-der img {
-  animation: flotar-timeline-der 5s ease-in-out infinite;
-}
+.timeline-deco-der img { animation: flotar-timeline-der 5s ease-in-out infinite; }
+.timeline-deco-izq img { animation: flotar-timeline-izq 5s ease-in-out infinite; }
 
-.timeline-deco-izq img {
-  animation: flotar-timeline-izq 5s ease-in-out infinite;
-}
-
-/* MÓVIL */
 @media (max-width: 768px) {
-  .timeline-row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
+  .timeline-row { grid-template-columns: 1fr; gap: 0; }
   .timeline-row.left .timeline-content,
   .timeline-row.right .timeline-content {
     grid-column: 1;
@@ -1384,31 +1306,17 @@ p {
     padding-left: 20px;
     padding-right: 0;
   }
-
-  .timeline-empty {
-    display: none;
-  }
-
-  .timeline-line {
-    left: 0;
-  }
-
-  .timeline-deco img {
-    width: 200px;
-    opacity: 0.3;
-  }
-
-  .timeline-deco-der {
-    right: -40px;
-  }
-
-  .timeline-deco-izq {
-    left: -40px;
-  }
+  .timeline-empty { display: none; }
+  .timeline-line { left: 0; }
+  .timeline-deco img { width: 200px; opacity: 0.3; }
+  .timeline-deco-der { right: -40px; }
+  .timeline-deco-izq { left: -40px; }
 }
 
 
-/* SOBRE MÍ — LECTURAS */
+/* ============================================================
+   SOBRE MÍ — LECTURAS
+   ============================================================ */
 .sobre-lecturas {
   background-color: var(--lavanda);
   padding: 80px 0;
@@ -1452,38 +1360,17 @@ p {
 }
 
 @media (max-width: 768px) {
-  .sobre-lecturas {
-    padding: 40px 0;
-  }
-
-  .sobre-lecturas h2 {
-    font-size: 22px;
-    margin-bottom: 30px;
-  }
-
-  .lectura-item {
-    margin-bottom: 20px;
-  }
-
-  .lectura-img {
-    width: 320px;
-    object-fit: cover;
-  }
-
-  .lectura-titulo {
-    font-size: 13px;
-  }
-
-  .lectura-autor {
-    font-size: 12px;
-  }
+  .sobre-lecturas { padding: 40px 0; }
+  .sobre-lecturas h2 { font-size: 22px; margin-bottom: 30px; }
+  .lectura-img { width: 320px; }
+  .lectura-titulo { font-size: 13px; }
+  .lectura-autor { font-size: 12px; }
 }
+
 
 /* ============================================================
    CURSO INDIVIDUAL
    ============================================================ */
-
-/* CURSO INDIVIDUAL HERO */
 .curso-ind-hero {
   position: relative;
   height: 500px;
@@ -1528,23 +1415,12 @@ p {
 }
 
 @media (max-width: 768px) {
-  .curso-ind-hero {
-    height: 450px;
-  }
-
-  .curso-ind-hero-content {
-    left: 24px;
-    transform: none;
-    bottom: 30px;
-    width: calc(100% - 48px);
-  }
-
-  .curso-ind-hero-content h1 {
-    font-size: 34px;
-  }
+  .curso-ind-hero { height: 450px; }
+  .curso-ind-hero-content { left: 24px; transform: none; bottom: 30px; width: calc(100% - 48px); }
+  .curso-ind-hero-content h1 { font-size: 34px; }
 }
 
-/* CURSO INDIVIDUAL — DESCRIPCIÓN */
+/* DESCRIPCIÓN */
 .curso-ind-desc {
   background-color: var(--marron-claro);
   padding: 80px 10px;
@@ -1569,14 +1445,26 @@ p {
 }
 
 @media (max-width: 992px) {
-  .kanji-img {
-    width: 280px;
-    margin-bottom: 20px;
-  }
+  .kanji-img { width: 280px; margin-bottom: 20px; }
 }
 
+/* Inscripción */
+.curso-inscripcion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
 
-/*CURSO INDIVIDUAL — CONTENIDOS & OBJETIVO */
+.curso-inscrito-msg {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d7a2d;
+  margin: 0;
+}
+
+/* CONTENIDOS & OBJETIVOS */
 .curso-ind-contenidos {
   background-color: var(--lavanda);
   padding: 80px 0;
@@ -1616,8 +1504,7 @@ p {
   color: var(--negro);
 }
 
-
-/* CURSO INDIVIDUAL — FORMULARIO */
+/* FORMULARIO DE CONTACTO EN CURSO */
 .curso-ind-contacto {
   background-color: var(--marron-claro);
   padding: 100px 80px;
@@ -1653,30 +1540,6 @@ p {
   color: var(--negro);
 }
 
-.curso-input {
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 8px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
-.curso-input::placeholder {
-  color: rgba(103, 88, 97, 0.5);
-}
-
-.curso-input:focus {
-  outline: 2px solid var(--marron-oscuro);
-}
-
-textarea.curso-input {
-  resize: none;
-  height: 100px;
-}
-
 .btn-curso-enviar {
   background-color: var(--marron-oscuro);
   color: var(--lavanda);
@@ -1698,7 +1561,7 @@ textarea.curso-input {
 
 
 /* ============================================================
-   LECCIÓN 
+   LECCIÓN — TABS
    ============================================================ */
 .leccion-section {
   min-height: 100vh;
@@ -1706,7 +1569,6 @@ textarea.curso-input {
   padding-top: 0;
 }
 
-/* Barra de tabs */
 .leccion-tabs {
   display: flex;
   width: 100%;
@@ -1754,7 +1616,6 @@ textarea.curso-input {
   font-size: 26px;
 }
 
-/* Contenido tabs */
 .tab-contenido {
   display: none;
   padding: 60px 0 80px;
@@ -1815,9 +1676,7 @@ textarea.curso-input {
   margin: 0;
 }
 
-/* ============================================================
-   GRAMÁTICA
-   ============================================================ */
+/* GRAMÁTICA */
 .gramatica-bloque {
   max-width: 820px;
 }
@@ -1863,9 +1722,7 @@ textarea.curso-input {
   margin: 0;
 }
 
-/* ============================================================
-   EJERCICIOS
-   ============================================================ */
+/* EJERCICIOS */
 .ejercicio-titulo {
   font-family: var(--font-sans);
   font-size: 13px;
@@ -1946,9 +1803,7 @@ textarea.curso-input {
   flex-wrap: wrap;
 }
 
-/* ============================================================
-   AUDIO
-   ============================================================ */
+/* AUDIO */
 .audio-lista {
   display: flex;
   flex-direction: column;
@@ -1974,9 +1829,7 @@ textarea.curso-input {
   width: 100%;
 }
 
-/* ============================================================
-   CULTURA
-   ============================================================ */
+/* CULTURA */
 .cultura-bloque {
   max-width: 820px;
   margin-bottom: 50px;
@@ -2005,31 +1858,14 @@ textarea.curso-input {
   color: var(--negro);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 768px) {
-  .tab-label {
-    display: none;
-  }
-
-  .tab-btn {
-    padding: 14px 6px;
-  }
-
-  .tab-icono {
-    font-size: 20px;
-  }
-
-  .vocab-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px 20px;
-  }
-
-  .ejercicio-botones {
-    flex-direction: column;
-  }
+  .tab-label { display: none; }
+  .tab-btn { padding: 14px 6px; }
+  .tab-icono { font-size: 20px; }
+  .vocab-grid { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
+  .ejercicio-botones { flex-direction: column; }
 }
+
 
 /* ============================================================
    CONTACTO
@@ -2101,17 +1937,6 @@ textarea.curso-input {
   color: var(--marron-oscuro);
 }
 
-.contacto-input {
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 10px 14px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
 .contacto-exito {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -2119,19 +1944,6 @@ textarea.curso-input {
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
-}
-
-.contacto-input::placeholder {
-  color: rgba(103, 88, 97, 0.5);
-}
-
-.contacto-input:focus {
-  outline: 1px solid var(--marron-oscuro);
-}
-
-textarea.contacto-input {
-  height: 80px;
-  resize: none;
 }
 
 .contacto-form-submit {
@@ -2159,7 +1971,6 @@ textarea.contacto-input {
   color: var(--lavanda);
 }
 
-/* Info contacto */
 .contacto-info {
   background-color: var(--lavanda);
   padding: 80px 0;
@@ -2181,30 +1992,16 @@ textarea.contacto-input {
 }
 
 @media (max-width: 768px) {
-  .contacto-hero {
-    flex-direction: column;
-  }
-
-  .contacto-hero-left,
-  .contacto-hero-right {
-    width: 100%;
-  }
-
-  .contacto-hero-left {
-    padding: 100px 24px 50px;
-  }
-
-  .contacto-hero-right {
-    height: 300px;
-  }
-
-  .contacto-info .col-md-4 {
-    margin-bottom: 40px;
-  }
+  .contacto-hero { flex-direction: column; }
+  .contacto-hero-left, .contacto-hero-right { width: 100%; }
+  .contacto-hero-left { padding: 100px 24px 50px; }
+  .contacto-hero-right { height: 300px; }
+  .contacto-info .col-md-4 { margin-bottom: 40px; }
 }
 
+
 /* ============================================================
-   AUTH — ACCESO
+   AUTH — LOGIN
    ============================================================ */
 .auth-section {
   min-height: 100vh;
@@ -2251,25 +2048,6 @@ textarea.contacto-input {
   color: var(--marron-oscuro);
 }
 
-.auth-input {
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 12px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
-.auth-input::placeholder {
-  color: rgba(103, 88, 97, 0.45);
-}
-
-.auth-input:focus {
-  outline: 1px solid var(--marron-oscuro);
-}
-
 .auth-submit {
   display: flex;
   justify-content: center;
@@ -2305,6 +2083,7 @@ textarea.contacto-input {
   color: var(--marron-oscuro);
   text-decoration: underline;
 }
+
 .auth-grupo-check {
   display: flex;
   align-items: center;
@@ -2336,10 +2115,9 @@ textarea.contacto-input {
 }
 
 @media (max-width: 768px) {
-  .auth-card {
-    padding: 40px 24px;
-  }
+  .auth-card { padding: 40px 24px; }
 }
+
 
 /* ============================================================
    REGISTRO
@@ -2380,25 +2158,6 @@ textarea.contacto-input {
   color: var(--marron-oscuro);
 }
 
-.registro-input {
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 12px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
-.registro-input::placeholder {
-  color: rgba(103, 88, 97, 0.45);
-}
-
-.registro-input:focus {
-  outline: 1px solid var(--marron-oscuro);
-}
-
 .registro-submit {
   margin-top: 10px;
 }
@@ -2424,6 +2183,7 @@ textarea.contacto-input {
   text-decoration: underline;
 }
 
+
 /* ============================================================
    MI PERFIL
    ============================================================ */
@@ -2442,7 +2202,6 @@ textarea.contacto-input {
   margin-bottom: 40px;
 }
 
-/* Tarjeta perfil */
 .perfil-card {
   background-color: var(--rosa);
   padding: 40px;
@@ -2455,7 +2214,6 @@ textarea.contacto-input {
   gap: 40px;
   margin-bottom: 30px;
 }
-
 
 .perfil-foto img {
   width: 200px;
@@ -2501,7 +2259,6 @@ textarea.contacto-input {
   display: inline-block;
 }
 
-/* Suscripción */
 .perfil-suscripcion {
   border-top: 1px solid rgba(103, 88, 97, 0.2);
   padding-top: 24px;
@@ -2532,7 +2289,6 @@ textarea.contacto-input {
 }
 
 /* Calendario */
-
 .perfil-calendario-titulo {
   font-family: var(--font-serif);
   font-size: 30px;
@@ -2638,14 +2394,318 @@ textarea.contacto-input {
 }
 
 @media (max-width: 768px) {
-  .perfil-calendario {
-    gap: 8px;
-  }
+  .perfil-calendario { gap: 8px; }
+  .cal-dia { font-size: 11px; border-radius: 6px; }
+}
 
-  .cal-dia {
-    font-size: 11px;
-    border-radius: 6px;
-  }
+
+/* ============================================================
+   EDITAR PERFIL
+   ============================================================ */
+.editar-perfil-section {
+  background-color: var(--lavanda);
+  min-height: 100vh;
+  padding: 120px 0 80px;
+}
+
+.editar-perfil-card {
+  background-color: var(--rosa);
+  padding: 40px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.editar-perfil-subtitulo {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-oscuro);
+  margin-bottom: 20px;
+}
+
+.editar-perfil-subtitulo span {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(103, 88, 97, 0.7);
+}
+
+.editar-perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.editar-perfil-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editar-perfil-grupo label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+}
+
+.editar-perfil-botones {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.editar-perfil-cancelar {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.editar-perfil-cancelar:hover {
+  opacity: 0.7;
+  color: var(--marron-oscuro);
+}
+
+.editar-perfil-exito {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #2d7a2d;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.editar-perfil-error {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .editar-perfil-grid { grid-template-columns: 1fr; }
+  .editar-perfil-card { padding: 24px; }
+}
+
+
+/* ============================================================
+   AULA VIRTUAL
+   ============================================================ */
+.aula-section {
+  background-color: var(--lavanda);
+  min-height: 100vh;
+  padding: 120px 0 80px;
+}
+
+.aula-titulo {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--marron-oscuro);
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+.aula-inner {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  background-color: var(--rosa);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.aula-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background-color: var(--rosa);
+  padding: 30px 0;
+}
+
+.aula-sidebar-header {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--marron-oscuro);
+  text-align: center;
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(103, 88, 97, 0.15);
+  margin-bottom: 10px;
+}
+
+.aula-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aula-sidebar-link {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  padding: 16px 24px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.aula-sidebar-link:hover,
+.aula-sidebar-link.active {
+  background-color: var(--marron-claro);
+  color: var(--marron-oscuro);
+  border-left: 3px solid var(--marron-oscuro);
+}
+
+.aula-contenido {
+  flex: 1;
+  padding: 40px;
+  border-left: 1px solid rgba(103, 88, 97, 0.15);
+}
+
+.aula-bienvenida {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--negro);
+  margin-bottom: 30px;
+}
+
+.aula-curso-actual-label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  margin-bottom: 16px;
+}
+
+.aula-curso-card {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.aula-curso-img {
+  width: 240px;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.aula-curso-nivel {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-oscuro);
+  margin: 0;
+}
+
+.aula-curso-titulo {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--marron-oscuro);
+  font-weight: 600;
+  margin: 4px 0 0;
+}
+
+.aula-progreso {
+  max-width: 440px;
+  margin-bottom: 16px;
+}
+
+.aula-progreso-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  margin-bottom: 8px;
+}
+
+.aula-progreso-barra {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(103, 88, 97, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.aula-progreso-fill {
+  height: 100%;
+  background-color: var(--marron-oscuro);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.aula-proxima {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--marron-oscuro);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.aula-proxima a {
+  color: var(--marron-oscuro);
+  text-decoration: underline;
+}
+
+.aula-sin-cursos {
+  text-align: center;
+  padding: 40px 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--marron-oscuro);
+}
+
+.aula-seccion-titulo {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--marron-oscuro);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.aula-mis-cursos-card {
+  background-color: white;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.aula-mis-cursos-img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.aula-mis-cursos-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .aula-inner { flex-direction: column; }
+  .aula-sidebar { width: 100%; padding: 20px 0; }
+  .aula-sidebar-menu { display: flex; flex-wrap: wrap; }
+  .aula-sidebar-link { padding: 10px 16px; border-left: none; border-bottom: 3px solid transparent; }
+  .aula-sidebar-link.active,
+  .aula-sidebar-link:hover { border-left: none; border-bottom: 3px solid var(--marron-oscuro); }
+  .aula-contenido { padding: 24px; border-left: none; border-top: 1px solid rgba(103,88,97,0.15); }
+  .aula-curso-img { width: 100%; height: 160px; }
 }
 
 
@@ -2673,7 +2733,6 @@ textarea.contacto-input {
   letter-spacing: 2px;
 }
 
-/* Formularios */
 .admin-form {
   background-color: var(--rosa);
   padding: 30px;
@@ -2714,21 +2773,6 @@ textarea.contacto-input {
   letter-spacing: 0.5px;
 }
 
-.admin-input {
-  width: 100%;
-  background-color: white;
-  border: none;
-  padding: 10px 14px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
-.admin-input:focus {
-  outline: 1px solid var(--marron-oscuro);
-}
-
 .admin-form-botones {
   display: flex;
   gap: 12px;
@@ -2755,7 +2799,6 @@ textarea.contacto-input {
   color: var(--lavanda);
 }
 
-/* Lista cursos */
 .admin-lista {
   display: flex;
   flex-direction: column;
@@ -2809,14 +2852,6 @@ textarea.contacto-input {
   font-family: var(--font-sans);
   font-size: 13px;
   color: rgba(103, 88, 97, 0.7);
-  margin: 0;
-}
-
-.admin-item-precio {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--marron-oscuro);
   margin: 0;
 }
 
@@ -2894,7 +2929,6 @@ input[type="file"].admin-input::file-selector-button:hover {
   margin-top: 2px;
 }
 
-/* Grid especial para imágenes juntas */
 .admin-form-grid-imagenes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2903,441 +2937,15 @@ input[type="file"].admin-input::file-selector-button:hover {
 }
 
 @media (max-width: 768px) {
-  .admin-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .admin-form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-item-botones {
-    flex-direction: row;
-    width: 100%;
-  }
-}
-
-/* ============================================================
-   EDITAR PERFIL
-   ============================================================ */
-.editar-perfil-section {
-  background-color: var(--lavanda);
-  min-height: 100vh;
-  padding: 120px 0 80px;
-}
-
-.editar-perfil-card {
-  background-color: var(--rosa);
-  padding: 40px;
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.editar-perfil-subtitulo {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--marron-oscuro);
-  margin-bottom: 20px;
-}
-
-.editar-perfil-subtitulo span {
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-  color: rgba(103, 88, 97, 0.7);
-}
-
-.editar-perfil-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 10px;
-}
-
-.editar-perfil-grupo {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.editar-perfil-grupo label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--marron-oscuro);
-}
-
-.editar-perfil-input {
-  width: 100%;
-  background-color: var(--lavanda);
-  border: none;
-  padding: 12px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--negro);
-  outline: none;
-}
-
-.editar-perfil-input:focus {
-  outline: 1px solid var(--marron-oscuro);
-}
-
-.editar-perfil-botones {
-  display: flex;
-  gap: 16px;
-  margin-top: 40px;
-  align-items: center;
-  justify-content: center;
-}
-
-.editar-perfil-cancelar {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--marron-oscuro);
-  text-decoration: underline;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.editar-perfil-cancelar:hover {
-  opacity: 0.7;
-  color: var(--marron-oscuro);
-}
-
-.editar-perfil-exito {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: #2d7a2d;
-  font-weight: 600;
-  margin-bottom: 24px;
-}
-
-.editar-perfil-error {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: #c0392b;
-  font-weight: 600;
-  margin-bottom: 24px;
-}
-
-@media (max-width: 768px) {
-  .editar-perfil-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .editar-perfil-card {
-    padding: 24px;
-  }
-}
-
-/* ============================================================
-   AULA VIRTUAL
-   ============================================================ */
-.aula-section {
-  background-color: var(--lavanda);
-  min-height: 100vh;
-  padding: 120px 0 80px;
-}
-
-.aula-titulo {
-  font-family: var(--font-serif);
-  font-size: 40px;
-  font-weight: 600;
-  color: var(--marron-oscuro);
-  letter-spacing: 2px;
-  margin-bottom: 50px;
-}
-
-.aula-inner {
-  display: flex;
-  gap: 0;
-  align-items: flex-start;
-  background-color: var(--rosa);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-/* Sidebar */
-.aula-sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  background-color: var(--rosa);
-  padding: 30px 0;
-}
-
-.aula-sidebar-header {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--marron-oscuro);
-  text-align: center;
-  padding: 0 20px 20px;
-  border-bottom: 1px solid rgba(103, 88, 97, 0.15);
-  margin-bottom: 10px;
-}
-
-.aula-sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.aula-sidebar-link {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--marron-oscuro);
-  padding: 16px 24px;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  border-left: 3px solid transparent;
-}
-
-.aula-sidebar-link:hover,
-.aula-sidebar-link.active {
-  background-color: var(--marron-claro);
-  color: var(--marron-oscuro);
-  border-left: 3px solid var(--marron-oscuro);
-}
-
-/* Contenido principal */
-.aula-contenido {
-  flex: 1;
-  padding: 40px;
-  border-left: 1px solid rgba(103, 88, 97, 0.15);
-}
-
-.aula-bienvenida {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--negro);
-  margin-bottom: 30px;
-}
-
-/* Curso actual */
-.aula-curso-actual-label {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--marron-oscuro);
-  margin-bottom: 16px;
-}
-
-.aula-curso-card {
-  display: inline-block;
-  margin-bottom: 24px;
-}
-
-.aula-curso-img {
-  width: 240px;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.aula-curso-nivel {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--marron-oscuro);
-  margin: 0;
-}
-
-.aula-curso-titulo {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--marron-oscuro);
-  font-weight: 600;
-  margin: 4px 0 0;
-}
-
-/* Barra de progreso */
-.aula-progreso {
-  max-width: 440px;
-  margin-bottom: 16px;
-}
-
-.aula-progreso-header {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--marron-oscuro);
-  margin-bottom: 8px;
-}
-
-.aula-progreso-barra {
-  width: 100%;
-  height: 12px;
-  background-color: rgba(103, 88, 97, 0.2);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.aula-progreso-fill {
-  height: 100%;
-  background-color: var(--marron-oscuro);
-  border-radius: 6px;
-  transition: width 0.5s ease;
-}
-
-/* Próxima lección */
-.aula-proxima {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--marron-oscuro);
-  font-style: italic;
-  margin-top: 10px;
-}
-
-.aula-proxima a {
-  color: var(--marron-oscuro);
-  text-decoration: underline;
-}
-
-/* Sin cursos */
-.aula-sin-cursos {
-  text-align: center;
-  padding: 40px 0;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--marron-oscuro);
-}
-
-/* Mis cursos */
-.aula-seccion-titulo {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  color: var(--marron-oscuro);
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.aula-mis-cursos-card {
-  background-color: white;
-  display: flex;
-  gap: 16px;
-  padding: 16px;
-  border-radius: 4px;
-}
-
-.aula-mis-cursos-img {
-  width: 100px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.aula-mis-cursos-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .aula-inner {
-    flex-direction: column;
-  }
-
-  .aula-sidebar {
-    width: 100%;
-    padding: 20px 0;
-  }
-
-  .aula-sidebar-menu {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .aula-sidebar-link {
-    padding: 10px 16px;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-  }
-
-  .aula-sidebar-link.active,
-  .aula-sidebar-link:hover {
-    border-left: none;
-    border-bottom: 3px solid var(--marron-oscuro);
-  }
-
-  .aula-contenido {
-    padding: 24px;
-    border-left: none;
-    border-top: 1px solid rgba(103, 88, 97, 0.15);
-  }
-
-  .aula-curso-img {
-    width: 100%;
-    height: 160px;
-  }
+  .admin-item { flex-direction: column; align-items: flex-start; }
+  .admin-form-grid { grid-template-columns: 1fr; }
+  .admin-item-botones { flex-direction: row; width: 100%; }
 }
 
 
 /* ============================================================
-   LITERATURA JAPONESA 
+   LITERATURA JAPONESA & BLOG
    ============================================================ */
-.lit-hero {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.lit-hero-left {
-  width: 50%;
-  background-color: var(--marron-claro);
-  padding: 50px 60px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-end;
-}
-
-.lit-hero-content h1 {
-  font-family: var(--font-serif);
-  font-size: 70px;
-  font-weight: 600;
-  color: var(--marron-oscuro);
-  line-height: 1;
-  margin-bottom: 30px;
-}
-
-.lit-hero-content p {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 28px;
-  color: var(--negro);
-
-}
-
-.lit-hero-right {
-  width: 50%;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.lit-hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.lit-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.563);
-}
-
-/* LITERATURA JAPONESA — LISTADO */
 .lit-listado {
   background-color: var(--lavanda);
   padding: 80px 0;
@@ -3350,7 +2958,7 @@ input[type="file"].admin-input::file-selector-button:hover {
   z-index: 1;
 }
 
-/* Ilustraciones ginkgo flotantes */
+/* Ilustraciones flotantes — compartidas con blog */
 .lit-deco {
   position: absolute;
   top: 0;
@@ -3361,13 +2969,8 @@ input[type="file"].admin-input::file-selector-button:hover {
   pointer-events: none;
 }
 
-.lit-deco-izq {
-  left: -100px;
-}
-
-.lit-deco-der {
-  right: -100px;
-}
+.lit-deco-izq { left: -100px; }
+.lit-deco-der { right: -100px; }
 
 .lit-deco img {
   width: 380px;
@@ -3378,26 +2981,19 @@ input[type="file"].admin-input::file-selector-button:hover {
 }
 
 @keyframes flotar-lit-izq {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(18px); }
-  100% { transform: translateX(0px); }
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(18px); }
 }
 
 @keyframes flotar-lit-der {
-  0%   { transform: translateX(0px); }
-  50%  { transform: translateX(-18px); }
-  100% { transform: translateX(0px); }
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(-18px); }
 }
 
-.lit-deco-izq img {
-  animation: flotar-lit-izq 6s ease-in-out infinite;
-}
+.lit-deco-izq img { animation: flotar-lit-izq 6s ease-in-out infinite; }
+.lit-deco-der img { animation: flotar-lit-der 6s ease-in-out infinite; }
 
-.lit-deco-der img {
-  animation: flotar-lit-der 6s ease-in-out infinite;
-}
-
-/* Cards de libros */
+/* Cards */
 .lit-libro-card {
   display: flex;
   flex-direction: column;
@@ -3426,6 +3022,16 @@ input[type="file"].admin-input::file-selector-button:hover {
   font-weight: 300;
   color: var(--marron-oscuro);
   margin: 0;
+}
+
+.lit-libro-categoria {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--marron-oscuro);
+  margin: 0;
+  font-weight: 500;
 }
 
 /* Paginación */
@@ -3457,55 +3063,14 @@ input[type="file"].admin-input::file-selector-button:hover {
   color: var(--negro);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .lit-hero {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .lit-hero-left,
-  .lit-hero-right {
-    width: 100%;
-  }
-
-  .lit-hero-right {
-    height: 300px;
-  }
-
-  .lit-hero-content h1 {
-    font-size: 48px;
-  }
-
-  .lit-libro-img {
-    height: 260px;
-  }
-
-  .lit-deco img {
-    width: 200px;
-  }
-
-  .lit-deco-izq {
-    left: -60px;
-  }
-
-  .lit-deco-der {
-    right: -60px;
-  }
-}
-
 /* Blog hero — mismo que lit pero con color diferente */
 .blog-hero-left {
   background-color: var(--marron-claro) !important;
 }
 
-/* Categoría del post */
-.lit-libro-categoria {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--marron-oscuro);
-  margin: 0;
-  font-weight: 500;
+@media (max-width: 768px) {
+  .lit-libro-img { height: 260px; }
+  .lit-deco img { width: 200px; }
+  .lit-deco-izq { left: -60px; }
+  .lit-deco-der { right: -60px; }
 }

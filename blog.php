@@ -1,5 +1,7 @@
 <?php
+
 require_once 'conexion.php';
+
 include("header-dark.php");
 
 $porPagina = 8;
@@ -17,7 +19,6 @@ $consultaPosts->bindValue(':offset', $offset, PDO::PARAM_INT);
 $consultaPosts->execute();
 $posts = $consultaPosts->fetchAll(PDO::FETCH_ASSOC);
 
-include("header.php");
 ?>
 
 <!-- HERO BLOG — mismo formato que lit japonesa -->
