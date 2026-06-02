@@ -740,7 +740,6 @@ p {
    CURSOS 
    ============================================================ */
 
-   /* HERO */
 /* HERO CURSOS */
 .cursos-hero {
   height: 100vh;
@@ -750,7 +749,7 @@ p {
 .cursos-hero-left {
   width: 50%;
   background-color: var(--marron-oscuro); 
-  padding: 50px 60px 60px;
+  padding: 50px 60px;
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
@@ -759,7 +758,8 @@ p {
 .cursos-hero-content h1 {
   font-size: 70px;
   color: var(--lavanda);     
-  margin-bottom: 16px;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
 .cursos-hero-content p {
@@ -2016,8 +2016,10 @@ textarea.curso-input {
 .contacto-hero-left {
   width: 50%;
   background-color: var(--rosa);
-  padding: 120px 60px 60px;
+  padding: 40px 60px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 24px;
 }
@@ -3258,7 +3260,7 @@ input[type="file"].admin-input::file-selector-button:hover {
 .lit-hero-left {
   width: 50%;
   background-color: var(--marron-claro);
-  padding: 50px 60px 60px;
+  padding: 50px 60px;
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
@@ -3267,10 +3269,10 @@ input[type="file"].admin-input::file-selector-button:hover {
 .lit-hero-content h1 {
   font-family: var(--font-serif);
   font-size: 70px;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--marron-oscuro);
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 .lit-hero-content p {
@@ -3278,7 +3280,7 @@ input[type="file"].admin-input::file-selector-button:hover {
   font-size: 15px;
   line-height: 28px;
   color: var(--negro);
-  max-width: 400px;
+
 }
 
 .lit-hero-right {
