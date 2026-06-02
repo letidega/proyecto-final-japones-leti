@@ -50,7 +50,7 @@ $libros = $consultaLibros->fetchAll(PDO::FETCH_ASSOC);
       <?php foreach ($libros as $libro) { ?>
         <div class="col-lg-3 col-md-6 col-6">
           <article class="lit-libro-card">
-            <img src="img/home/<?= $libro['img'] ?>"
+            <img src="img/<?= $libro['img_portada'] ?>"
                  alt="<?= $libro['titulo'] ?>"
                  class="lit-libro-img">
             <p class="lit-libro-titulo"><?= $libro['titulo'] ?></p>

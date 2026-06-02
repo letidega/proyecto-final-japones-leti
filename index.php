@@ -5,7 +5,7 @@ include("header.php");
 require_once 'conexion.php';
 
 // Consulta libros
-$consultaLibros = $conexion->prepare("SELECT * FROM libros ORDER BY id_libro DESC LIMIT 5");
+$consultaLibros = $conexion->prepare("SELECT * FROM libros ORDER BY id_libro ASC LIMIT 5");
 $consultaLibros->execute();
 $libros = $consultaLibros->fetchAll(PDO::FETCH_ASSOC);
 
@@ -78,7 +78,7 @@ $posts = $consultaBlog->fetchAll(PDO::FETCH_ASSOC);
   <div class="container">
     <div class="d-flex justify-content-between mb-4 align-items-center">
       <h2>LITERATURA JAPONESA</h2>
-      <a href="#" class="btn miBoton">Mostrar más</a>
+      <a href="literatura-japonesa.php" class="btn miBoton">Mostrar más</a>
     </div>
     <div class="options">
 
